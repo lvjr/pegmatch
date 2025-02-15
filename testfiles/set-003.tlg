@@ -1,0 +1,289 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: multiple operators
+============================================================
+> Input= !\TpegP {cd} * \TpegP {ab} / !\TpegP {uv} * \TpegP {de} / !\TpegP {wx} * \TpegP {vw} .
+> Compiled tpeg variable \lTmpaTpeg:
+\TpegChoice 
+{
+  {
+    \TpegConcat 
+    {
+      {
+        \TpegNot 
+        {
+          \TpegP 
+          {
+            cd
+          }
+        }
+      }
+      {
+        \TpegP 
+        {
+          ab
+        }
+      }
+    }
+  }
+  {
+    \TpegConcat 
+    {
+      {
+        \TpegNot 
+        {
+          \TpegP 
+          {
+            uv
+          }
+        }
+      }
+      {
+        \TpegP 
+        {
+          de
+        }
+      }
+    }
+  }
+  {
+    \TpegConcat 
+    {
+      {
+        \TpegNot 
+        {
+          \TpegP 
+          {
+            wx
+          }
+        }
+      }
+      {
+        \TpegP 
+        {
+          vw
+        }
+      }
+    }
+  }
+}
+============================================================
+============================================================
+TEST 2: multiple operators
+============================================================
+> Input= ! \TpegP {cd} * !\TpegP {de} * \TpegP {ab} / ! \TpegP {vw} * !\TpegP {wx} * \TpegP {uv} .
+> Compiled tpeg variable \lTmpaTpeg:
+\TpegChoice 
+{
+  {
+    \TpegConcat 
+    {
+      {
+        \TpegNot 
+        {
+          \TpegP 
+          {
+            cd
+          }
+        }
+      }
+      {
+        \TpegNot 
+        {
+          \TpegP 
+          {
+            de
+          }
+        }
+      }
+      {
+        \TpegP 
+        {
+          ab
+        }
+      }
+    }
+  }
+  {
+    \TpegConcat 
+    {
+      {
+        \TpegNot 
+        {
+          \TpegP 
+          {
+            vw
+          }
+        }
+      }
+      {
+        \TpegNot 
+        {
+          \TpegP 
+          {
+            wx
+          }
+        }
+      }
+      {
+        \TpegP 
+        {
+          uv
+        }
+      }
+    }
+  }
+}
+============================================================
+============================================================
+TEST 3: multiple operators
+============================================================
+> Input= !\TpegP {ab} / !\TpegP {de} * !\TpegP {uv} * \TpegP {cd} / !\TpegP {wx} * \TpegP {vw} .
+> Compiled tpeg variable \lTmpaTpeg:
+\TpegChoice 
+{
+  {
+    \TpegNot 
+    {
+      \TpegP 
+      {
+        ab
+      }
+    }
+  }
+  {
+    \TpegConcat 
+    {
+      {
+        \TpegNot 
+        {
+          \TpegP 
+          {
+            de
+          }
+        }
+      }
+      {
+        \TpegNot 
+        {
+          \TpegP 
+          {
+            uv
+          }
+        }
+      }
+      {
+        \TpegP 
+        {
+          cd
+        }
+      }
+    }
+  }
+  {
+    \TpegConcat 
+    {
+      {
+        \TpegNot 
+        {
+          \TpegP 
+          {
+            wx
+          }
+        }
+      }
+      {
+        \TpegP 
+        {
+          vw
+        }
+      }
+    }
+  }
+}
+============================================================
+============================================================
+TEST 4: multiple operators
+============================================================
+> Input= \TpegP {12} ^ {4} / \TpegP {ab} * \TpegP {cd} .
+> Compiled tpeg variable \lTmpaTpeg:
+\TpegChoice 
+{
+  {
+    \TpegRepeat 
+    {
+      \TpegP 
+      {
+        12
+      }
+    }
+    {
+      4
+    }
+  }
+  {
+    \TpegConcat 
+    {
+      {
+        \TpegP 
+        {
+          ab
+        }
+      }
+      {
+        \TpegP 
+        {
+          cd
+        }
+      }
+    }
+  }
+}
+============================================================
+============================================================
+TEST 5: multiple operators with errors
+============================================================
+> Input= \TpegP {12} ^ {4} ^ 1 / \TpegP {ab} * \TpegP {cd} .
+! Package tpeg Error: Invalid arguments '^ 1' for \TpegRepeat!
+Type <return> to continue.
+ ...                                              
+l. ......{12} ^ {4} ^ 1 / \TpegP{ab} * \TpegP{cd} }
+LaTeX does not know anything more about this error, sorry.
+Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+> Compiled tpeg variable \lTmpaTpeg:
+\TpegChoice 
+{
+  {
+    \TpegRepeat 
+    {
+      \TpegP 
+      {
+        12
+      }
+    }
+    {
+      4
+    }
+  }
+  {
+    \TpegConcat 
+    {
+      {
+        \TpegP 
+        {
+          ab
+        }
+      }
+      {
+        \TpegP 
+        {
+          cd
+        }
+      }
+    }
+  }
+}
+============================================================
+(set-003.aux)

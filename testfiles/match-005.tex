@@ -1,0 +1,20 @@
+\documentclass{article}
+\input{regression-test}
+\SetTpegTracing{+match}
+\begin{document}
+
+\START
+
+\NewTpeg\lMyWordTpeg
+\NewTpeg\lMyAnywhereTpeg
+
+\BEGINTEST{tpeg variables}
+\SetTpeg\lMyWordTpeg{\TpegR{AZaz} ^ {3}}
+\SetTpeg\lMyAnywhereTpeg{\lMyWordTpeg / \TpegQ{1} * \lMyAnywhereTpeg}
+\IfTpegMatchTF\lMyAnywhereTpeg{foo bar}{\typeout{[T]}}{\typeout{[F]}}
+\IfTpegMatchTF\lMyAnywhereTpeg{fo bar}{\typeout{[T]}}{\typeout{[F]}}
+\IfTpegMatchTF\lMyAnywhereTpeg{123 ba}{\typeout{[T]}}{\typeout{[F]}}
+\IfTpegMatchTF\lMyAnywhereTpeg{123 bar}{\typeout{[T]}}{\typeout{[F]}}
+\ENDTEST
+
+\end{document}

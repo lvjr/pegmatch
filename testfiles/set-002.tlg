@@ -1,0 +1,99 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: choice operator
+============================================================
+> Input= \TpegP {ab} / \TpegP {cd} / \TpegP {de} .
+> Compiled tpeg variable \lTmpaTpeg:
+\TpegChoice 
+{
+  {
+    \TpegP 
+    {
+      ab
+    }
+  }
+  {
+    \TpegP 
+    {
+      cd
+    }
+  }
+  {
+    \TpegP 
+    {
+      de
+    }
+  }
+}
+============================================================
+============================================================
+TEST 2: concat operator
+============================================================
+> Input= \TpegP {aa} * \TpegP {bb} * \TpegP {cc} .
+> Compiled tpeg variable \lTmpaTpeg:
+\TpegConcat 
+{
+  {
+    \TpegP 
+    {
+      aa
+    }
+  }
+  {
+    \TpegP 
+    {
+      bb
+    }
+  }
+  {
+    \TpegP 
+    {
+      cc
+    }
+  }
+}
+============================================================
+============================================================
+TEST 3: not predicate operator
+============================================================
+> Input= ! \TpegP {ddd} .
+> Compiled tpeg variable \lTmpaTpeg:
+\TpegNot 
+{
+  \TpegP 
+  {
+    ddd
+  }
+}
+============================================================
+============================================================
+TEST 4: and predicate operator
+============================================================
+> Input= & \TpegP {eee} .
+> Compiled tpeg variable \lTmpaTpeg:
+\TpegAnd 
+{
+  \TpegP 
+  {
+    eee
+  }
+}
+============================================================
+============================================================
+TEST 5: repeat operator
+============================================================
+> Input= \TpegP {test} ^ 4 .
+> Compiled tpeg variable \lTmpaTpeg:
+\TpegRepeat 
+{
+  \TpegP 
+  {
+    test
+  }
+}
+{
+  4
+}
+============================================================
+(set-002.aux)

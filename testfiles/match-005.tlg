@@ -1,0 +1,207 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: tpeg variables
+============================================================
+StartMatch{foo bar}
+  StartChoice{foo bar}
+    StartRepeat{3}{foo bar}
+      StartR{AZaz}{foo bar}
+      StopR:true,2
+      StartR{AZaz}{oo bar}
+      StopR:true,2
+      StartR{AZaz}{o bar}
+      StopR:true,2
+      StartR{AZaz}{ bar}
+      StopR:false,1
+    StopRepeat:true,4
+  StopChoice:true,4
+StopMatch:true,4
+[T]
+StartMatch{fo bar}
+  StartChoice{fo bar}
+    StartRepeat{3}{fo bar}
+      StartR{AZaz}{fo bar}
+      StopR:true,2
+      StartR{AZaz}{o bar}
+      StopR:true,2
+      StartR{AZaz}{ bar}
+      StopR:false,1
+    StopRepeat:false,3
+    StartConcat{fo bar}
+      StartQ{1}{fo bar}
+      StopQ:true,2
+      StartChoice{o bar}
+        StartRepeat{3}{o bar}
+          StartR{AZaz}{o bar}
+          StopR:true,2
+          StartR{AZaz}{ bar}
+          StopR:false,1
+        StopRepeat:false,2
+        StartConcat{o bar}
+          StartQ{1}{o bar}
+          StopQ:true,2
+          StartChoice{ bar}
+            StartRepeat{3}{ bar}
+              StartR{AZaz}{ bar}
+              StopR:false,1
+            StopRepeat:false,1
+            StartConcat{ bar}
+              StartQ{1}{ bar}
+              StopQ:true,2
+              StartChoice{bar}
+                StartRepeat{3}{bar}
+                  StartR{AZaz}{bar}
+                  StopR:true,2
+                  StartR{AZaz}{ar}
+                  StopR:true,2
+                  StartR{AZaz}{r}
+                  StopR:true,2
+                  StartR{AZaz}{}
+                  StopR:false,1
+                StopRepeat:true,4
+              StopChoice:true,4
+            StopConcat:true,5
+          StopChoice:true,5
+        StopConcat:true,6
+      StopChoice:true,6
+    StopConcat:true,7
+  StopChoice:true,7
+StopMatch:true,7
+[T]
+StartMatch{123 ba}
+  StartChoice{123 ba}
+    StartRepeat{3}{123 ba}
+      StartR{AZaz}{123 ba}
+      StopR:false,1
+    StopRepeat:false,1
+    StartConcat{123 ba}
+      StartQ{1}{123 ba}
+      StopQ:true,2
+      StartChoice{23 ba}
+        StartRepeat{3}{23 ba}
+          StartR{AZaz}{23 ba}
+          StopR:false,1
+        StopRepeat:false,1
+        StartConcat{23 ba}
+          StartQ{1}{23 ba}
+          StopQ:true,2
+          StartChoice{3 ba}
+            StartRepeat{3}{3 ba}
+              StartR{AZaz}{3 ba}
+              StopR:false,1
+            StopRepeat:false,1
+            StartConcat{3 ba}
+              StartQ{1}{3 ba}
+              StopQ:true,2
+              StartChoice{ ba}
+                StartRepeat{3}{ ba}
+                  StartR{AZaz}{ ba}
+                  StopR:false,1
+                StopRepeat:false,1
+                StartConcat{ ba}
+                  StartQ{1}{ ba}
+                  StopQ:true,2
+                  StartChoice{ba}
+                    StartRepeat{3}{ba}
+                      StartR{AZaz}{ba}
+                      StopR:true,2
+                      StartR{AZaz}{a}
+                      StopR:true,2
+                      StartR{AZaz}{}
+                      StopR:false,1
+                    StopRepeat:false,3
+                    StartConcat{ba}
+                      StartQ{1}{ba}
+                      StopQ:true,2
+                      StartChoice{a}
+                        StartRepeat{3}{a}
+                          StartR{AZaz}{a}
+                          StopR:true,2
+                          StartR{AZaz}{}
+                          StopR:false,1
+                        StopRepeat:false,2
+                        StartConcat{a}
+                          StartQ{1}{a}
+                          StopQ:true,2
+                          StartChoice{}
+                            StartRepeat{3}{}
+                              StartR{AZaz}{}
+                              StopR:false,1
+                            StopRepeat:false,1
+                            StartConcat{}
+                              StartQ{1}{}
+                              StopQ:false,1
+                            StopConcat:false,1
+                          StopChoice:false,1
+                        StopConcat:false,2
+                      StopChoice:false,1
+                    StopConcat:false,2
+                  StopChoice:false,1
+                StopConcat:false,2
+              StopChoice:false,1
+            StopConcat:false,2
+          StopChoice:false,1
+        StopConcat:false,2
+      StopChoice:false,1
+    StopConcat:false,2
+  StopChoice:false,1
+StopMatch:false,1
+[F]
+StartMatch{123 bar}
+  StartChoice{123 bar}
+    StartRepeat{3}{123 bar}
+      StartR{AZaz}{123 bar}
+      StopR:false,1
+    StopRepeat:false,1
+    StartConcat{123 bar}
+      StartQ{1}{123 bar}
+      StopQ:true,2
+      StartChoice{23 bar}
+        StartRepeat{3}{23 bar}
+          StartR{AZaz}{23 bar}
+          StopR:false,1
+        StopRepeat:false,1
+        StartConcat{23 bar}
+          StartQ{1}{23 bar}
+          StopQ:true,2
+          StartChoice{3 bar}
+            StartRepeat{3}{3 bar}
+              StartR{AZaz}{3 bar}
+              StopR:false,1
+            StopRepeat:false,1
+            StartConcat{3 bar}
+              StartQ{1}{3 bar}
+              StopQ:true,2
+              StartChoice{ bar}
+                StartRepeat{3}{ bar}
+                  StartR{AZaz}{ bar}
+                  StopR:false,1
+                StopRepeat:false,1
+                StartConcat{ bar}
+                  StartQ{1}{ bar}
+                  StopQ:true,2
+                  StartChoice{bar}
+                    StartRepeat{3}{bar}
+                      StartR{AZaz}{bar}
+                      StopR:true,2
+                      StartR{AZaz}{ar}
+                      StopR:true,2
+                      StartR{AZaz}{r}
+                      StopR:true,2
+                      StartR{AZaz}{}
+                      StopR:false,1
+                    StopRepeat:true,4
+                  StopChoice:true,4
+                StopConcat:true,5
+              StopChoice:true,5
+            StopConcat:true,6
+          StopChoice:true,6
+        StopConcat:true,7
+      StopChoice:true,7
+    StopConcat:true,8
+  StopChoice:true,8
+StopMatch:true,8
+[T]
+============================================================
+(match-005.aux)

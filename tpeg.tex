@@ -1,0 +1,274 @@
+
+\documentclass[oneside]{book}
+\usepackage[a4paper,margin=2cm]{geometry}
+
+\newcommand*{\myversion}{2025A}
+\newcommand*{\mydate}{Version \myversion\ (\the\year-\mylpad\month-\mylpad\day)}
+\newcommand*{\mylpad}[1]{\ifnum#1<10 0\the#1\else\the#1\fi}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt plus 1pt minus 1pt}
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  urlcolor=blue3,
+  linkcolor=green3,
+}
+
+\usepackage{tabularray}
+
+\NewTblrEnviron{spectblr}
+\SetTblrOuter[spectblr]{long}
+\SetTblrInner[spectblr]{
+  hlines = {gray3}, column{Z} = {co=1}, colsep = 5pt,
+  row{2-Z} = {brown8},
+  row{1} = {fg=white, bg=purple2, font=\bfseries\sffamily},
+  rowhead = 1,
+}
+
+\usepackage{codehigh}
+\colorlet{highback}{azure9}
+\CodeHigh{language=latex/latex2,style/main=gray9,style/code=gray9}
+
+\NewDocumentCommand\PP{m}{\texttt{\fakeverb{#1}}} % package
+\NewDocumentCommand\CC{m}{\texttt{\fakeverb{#1}}} % command
+\NewDocumentCommand\VV{m}{\texttt{\fakeverb{#1}}} % variable
+\NewDocumentCommand\VT{m}{\texttt{\fakeverb{#1}}} % variable type
+\NewDocumentCommand\TT{m}{\texttt{\fakeverb{#1}}} % text
+
+\usepackage{tpeg}
+
+\begin{document}
+
+\title{\textsf{\color{green3}TPEG: Parsing Expression Grammars for TeX}}
+\author{Jianrui Lyu (tolvjr@163.com)\\ \url{https://github.com/lvjr/tpeg}}
+\date{\mydate}
+\maketitle
+
+\tableofcontents
+
+\chapter{Package Interfaces}
+
+\section{Introduction}
+
+The \PP{tpeg} package ports PEG (Parsing Expression Grammars)%
+\footnote{See Parsing Expression Grammars page: \url{https://bford.info/packrat/}.} to TeX.
+Following the design in LPEG (Parsing Expression Grammars for Lua),%
+\footnote{See Parsing Expression Grammars for Lua page: \url{https://www.inf.puc-rio.br/~roberto/lpeg/}.}
+it defines patterns as LaTeX3 variables, and offers several operators to compose patterns.
+
+In general, PEG matching is much more powerful than RE (Regular Expressions) matching.
+At this time, \PP{tpeg} package only supports TeX strings.%
+\footnote{I started to write it for my \PP{codehigh} package to get rid of \PP{l3regex} dependency.}
+Also it is still in experimental status, hence some interfaces may change in future releases.
+
+\section{The first example}
+
+The following is the first example:
+\begin{demohigh}
+\NewTpeg\lMyTestTpeg
+\SetTpeg\lMyTestTpeg{\TpegP{abc}}
+\IfTpegMatchTF\lMyTestTpeg{a}{T}{F}
+\IfTpegMatchTF\lMyTestTpeg{ab}{T}{F}
+\IfTpegMatchTF\lMyTestTpeg{abc}{T}{F}
+\IfTpegMatchTF\lMyTestTpeg{abcd}{T}{F}
+\end{demohigh}
+In this example, we use \CC{\NewTpeg} to create a new \VT{tpeg} variable \VV{\lMyTestTpeg},
+and use \CC{\SetTpeg} to set the variable with a pattern expression,
+then use \CC{\IfTpegMatchTF} to match it against different subject strings.
+The pattern \TT{\TpegP{abc}} matches the string \TT{abc} literally.
+
+\section{Basic commands}
+
+This package provides the following commands for creating and matching \VT{tpeg} patterns:\nopagebreak
+\begin{spectblr}[
+  caption = Basic commands
+]{}
+  Command & Description \\
+  \CC{\NewTpeg#1}     & create \VT{tpeg} variable \TT{#1}\\
+  \CC{\SetTpeg#1{#2}} & set \VT{tpeg} variable \TT{#1} with \VT{tpeg} expresssion \VT{#2}\\
+  \CC{\IfTpegMatchT#1{#2}{#3}}
+      & match \TT{#1} against string \TT{#2}, then run code \TT{#3} if the match succeeds\\
+  \CC{\IfTpegMatchF#1{#2}{#3}}
+      & match \TT{#1} against string \TT{#2}, then run code \TT{#3} if the match fails\\
+  \CC{\IfTpegMatchTF#1{#2}{#3}{#4}}
+      & match \TT{#1} against string \TT{#2}, then run code \TT{#3} if the match succeeds,
+        othewise run code \TT{#4}\\
+  \CC{\IfTpegExtractT#1{#2}#3{#4}}
+      & match \TT{#1} against string \TT{#2},
+        then store captures in \TT{#3} and run code \TT{#4} if the match succeeds\\
+  \CC{\IfTpegExtractF#1{#2}#3{#4}}
+      & match \TT{#1} against string \TT{#2},
+        then clear \TT{#3} and run code \TT{#4} if the match fails\\
+  \CC{\IfTpegExtractTF#1{#2}#3{#4}{#5}}
+      & match \TT{#1} against string \TT{#2},
+        then store captures in \TT{#3} and run code \TT{#4} if the match succeeds,
+        othewise clear \TT{#3} and run code \TT{#5}
+\end{spectblr}
+
+\section{Scratch variables}
+
+There are two predefined scratch \VT{tpeg} variables for setting \VT{tpeg} patterns:
+\VV{\lTmpaTpeg} and \VV{\lTmpbTpeg}.
+Also there are two predefined scratch \VT{seq} variables for storing captures
+(see Section~\ref{sect:capture}): \VV{\lTpegTmpaSeq} and \VV{\lTpegTmpbSeq}.%
+
+\section{Primitive patterns}
+
+This package provides the following commands for making primitive patterns:%\nopagebreak
+\begin{spectblr}[
+  caption = Primitive patterns
+]{}
+  Pattern & Description \\
+  \TT{\TpegP{<string>}} & match \TT{<string>} literally \\
+  \TT{\TpegQ{<n>}}      & match exactly \TT{<n>} characters \\
+  \TT{\TpegR{<X><Y><x><y>}}
+     & match any character between \TT{<X>} and \TT{<Y>} or between \TT{<x>} and \TT{<y>} \\
+  \TT{\TpegS{<string>}} & match any character in \TT{<string>}
+\end{spectblr}
+
+The following examples demonstrate pattern matching with other primitive patterns:
+\begin{demohigh}
+\SetTpeg\lMyTestTpeg{\TpegQ{2}}
+\IfTpegMatchTF\lMyTestTpeg{u}{T}{F}
+\IfTpegMatchTF\lMyTestTpeg{vw}{T}{F}
+\IfTpegMatchTF\lMyTestTpeg{xyz}{T}{F}
+\end{demohigh}
+\begin{demohigh}
+\SetTpeg\lMyTestTpeg{\TpegR{AZ}}
+\IfTpegMatchTF\lMyTestTpeg{Qq}{T}{F}
+\IfTpegMatchTF\lMyTestTpeg{q1}{T}{F}
+\IfTpegMatchTF\lMyTestTpeg{1Q}{T}{F}
+\SetTpeg\lMyTestTpeg{\TpegR{AZaz}}
+\IfTpegMatchTF\lMyTestTpeg{Qq}{T}{F}
+\IfTpegMatchTF\lMyTestTpeg{q1}{T}{F}
+\IfTpegMatchTF\lMyTestTpeg{1Q}{T}{F}
+\end{demohigh}
+
+\begin{demohigh}
+\SetTpeg\lMyTestTpeg{\TpegS{world}}
+\IfTpegMatchTF\lMyTestTpeg{one}{T}{F}
+\IfTpegMatchTF\lMyTestTpeg{two}{T}{F}
+\end{demohigh}
+
+By default, PEG always starts at the first character.
+Since both \CC{\TpegR} and \CC{\TpegS} match only one letter,
+both last commands in previous two examples give \TT{F}.
+
+\section{Pattern operators}
+
+This package provides the following pattern operators for composing patterns:
+\begin{spectblr}[
+  caption = Pattern operators
+]{}
+  Operator         & Precedence & Description \\
+  \TT{patt1/patt2} & 1 (choice) & match \TT{patt1} or \TT{patt2} (ordered choice) \\
+  \TT{patt1*patt2} & 2 (concat) & match \TT{patt1} followed by \TT{patt2} \\
+  \TT{!patt}       & 3 (not predicate) & match only if \TT{patt} does not match, and consume no input \\
+  \TT{&patt}       & 3 (and predicate) & match \TT{patt} but consume no input \\
+  \TT{patt^{<n>}}  & 4 (repeat) & match at least \TT{<n>} ($n\ge0)$ repetitions of \TT{patt} \\
+  \TT{patt^{-<n>}} & 4 (repeat) & match at most \TT{<n>} ($n>0$) repetitions of \TT{patt} \\
+  \TT{{patt expr}} & 5 (group)  & match \TT{patt expr} (pattern expression)
+\end{spectblr}
+
+With \TT{!} and \TT{*} operators, we can create negative character sets:
+\begin{demohigh}
+\SetTpeg\lMyTestTpeg{!\TpegR{09} * \TpegQ{1}}
+\IfTpegMatchTF\lMyTestTpeg{A}{T}{F}
+\IfTpegMatchTF\lMyTestTpeg{5}{T}{F}
+\SetTpeg\lMyTestTpeg{!\TpegS{abc} * \TpegQ{1}}
+\IfTpegMatchTF\lMyTestTpeg{B}{T}{F}
+\IfTpegMatchTF\lMyTestTpeg{b}{T}{F}
+\end{demohigh}
+
+With \TT{^} operator, we can match words:
+\begin{demohigh}
+\SetTpeg\lMyTestTpeg{\TpegR{AZaz} ^ {1}}
+\IfTpegMatchTF\lMyTestTpeg{HELLO}{T}{F}
+\IfTpegMatchTF\lMyTestTpeg{world}{T}{F}
+\IfTpegMatchTF\lMyTestTpeg{ text }{T}{F}
+\IfTpegMatchTF\lMyTestTpeg{(text)}{T}{F}
+\end{demohigh}
+
+In fact, \TT{patt^{-1}} is similar to \TT{expr?}, \TT{patt^0} is similar to \TT{expr*},
+and \TT{patt^1} is similar to \TT{expr+} in regular expression matching.
+
+\section{Pattern variables}
+
+In using \CC{\SetTpeg} command to set a \VT{tpeg} variable with a pattern expression,
+you can use other \VT{tpeg} variables. For example:
+\begin{demohigh}
+\SetTpeg\lTmpaTpeg{\TpegR{AZ} / \TpegR{az}}
+\SetTpeg\lTmpbTpeg{\TpegS{135} * \lTmpaTpeg}
+\IfTpegMatchTF\lTmpbTpeg{2ab}{[T]}{[F]}
+\IfTpegMatchTF\lTmpbTpeg{3ab}{[T]}{[F]}
+\SetTpeg\lTmpbTpeg{\TpegS{135} * \lTmpaTpeg^{3}}
+\IfTpegMatchTF\lTmpbTpeg{3ab}{[T]}{[F]}
+\IfTpegMatchTF\lTmpbTpeg{3abcd}{[T]}{[F]}
+\end{demohigh}
+
+By using another recursive pattern, we can make \PP{tpeg} find a pattern anywhere in a string.
+The following example demonstrates how to match a word with at least three letters
+inside a string:\nopagebreak
+\begin{demohigh}
+\NewTpeg\lMyWordTpeg
+\NewTpeg\lMyAnywhereTpeg
+\SetTpeg\lMyWordTpeg{\TpegR{AZaz}^{3}}
+\SetTpeg\lMyAnywhereTpeg{\lMyWordTpeg / \TpegQ{1} * \lMyAnywhereTpeg}
+\IfTpegMatchTF\lMyAnywhereTpeg{foo bar}{[T]}{[F]}
+\IfTpegMatchTF\lMyAnywhereTpeg{fo bar}{[T]}{[F]}
+\IfTpegMatchTF\lMyAnywhereTpeg{123 ba}{[T]}{[F]}
+\IfTpegMatchTF\lMyAnywhereTpeg{123 bar}{[T]}{[F]}
+\end{demohigh}
+In this example, \VV{\lMyAnywhereTpeg} tries to match \VV{\lMyWordTpeg},
+skipping one letter and tries again if it fails.
+
+\section{Capture patterns}%
+\label{sect:capture}
+
+This package provides the following commands for making capture patterns:
+\begin{spectblr}[
+  caption = Primitive patterns
+]{}
+  Pattern             & Name & Description \\
+  \CC{\TpegC{<patt>}} & simple capture & capture the match for \TT{<patt>}\\
+  \CC{\TpegCp}        & position capture & capture current position
+\end{spectblr}
+
+Position capture \CC{\TpegCp} must be concatenated with other patterns (by using \TT{*} operator):
+\begin{demohigh}
+\SetTpeg\lTmpaTpeg{\TpegCp * \TpegR{az}^{1} * \TpegCp * \TpegR{09}^{1} * \TpegCp}
+\IfTpegExtractTF\lTmpaTpeg{12ab}\lTpegTmpaSeq{%
+  \MapTpegSeqInline\lTpegTmpaSeq{[#1]}%
+}{Failed}
+\IfTpegExtractTF\lTmpaTpeg{ab12}\lTpegTmpaSeq{%
+  \MapTpegSeqInline\lTpegTmpaSeq{[#1]}%
+}{Failed}
+\IfTpegExtractTF\lTmpaTpeg{abcd12345}\lTpegTmpaSeq{%
+  \MapTpegSeqInline\lTpegTmpaSeq{[#1]}%
+}{Failed}
+\end{demohigh}
+In this example, we use \CC{\IfTpegExtractTF} command to extract all captures,
+which are stored in the \VT{seq} variable (\CC{\lTpegTmpaSeq}) specified by the third argument.
+Then we use \CC{\MapTpegSeqInline} command to print each capture.
+
+If you want to capture the substrings, you can modified the above example as follows:\nopagebreak
+\begin{demohigh}
+\SetTpeg\lTmpaTpeg{\TpegC{\TpegR{az}^{1}} * \TpegC{\TpegR{09}^{1}}}
+\IfTpegExtractTF\lTmpaTpeg{12ab}\lTpegTmpaSeq{%
+  \MapTpegSeqInline\lTpegTmpaSeq{[#1]}%
+}{Failed}
+\IfTpegExtractTF\lTmpaTpeg{ab12}\lTpegTmpaSeq{%
+  \MapTpegSeqInline\lTpegTmpaSeq{[#1]}%
+}{Failed}
+\IfTpegExtractTF\lTmpaTpeg{abcd12345}\lTpegTmpaSeq{%
+  \MapTpegSeqInline\lTpegTmpaSeq{[#1]}%
+}{Failed}
+\end{demohigh}
+
+\chapter{The Source Code}
+
+\dochighinput[language=latex/latex3]{tpeg.sty}
+
+\end{document}

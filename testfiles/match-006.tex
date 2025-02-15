@@ -1,0 +1,34 @@
+\documentclass{article}
+\input{regression-test}
+\SetTpegTracing{+match}
+\begin{document}
+
+\START
+
+\BEGINTEST{simple capture}
+\SetTpeg\lTmpaTpeg{\TpegCp * \TpegR{az} ^ {1} * \TpegCp * \TpegR{09} ^ {1} * \TpegCp}
+\IfTpegExtractTF\lTmpaTpeg{12ab}\lTpegTmpaSeq{%
+  \MapTpegSeqInline\lTpegTmpaSeq{\typeout{[#1]}}%
+}{Failed}
+\IfTpegExtractTF\lTmpaTpeg{ab12}\lTpegTmpaSeq{%
+  \MapTpegSeqInline\lTpegTmpaSeq{\typeout{[#1]}}%
+}{Failed}
+\IfTpegExtractTF\lTmpaTpeg{abcd12345}\lTpegTmpaSeq{%
+  \MapTpegSeqInline\lTpegTmpaSeq{\typeout{[#1]}}%
+}{Failed}
+\ENDTEST
+
+\BEGINTEST{position capture}
+\SetTpeg\lTmpaTpeg{\TpegC{\TpegR{az}^{1}} * \TpegC{\TpegR{09}^{1}}}
+\IfTpegExtractTF\lTmpaTpeg{12ab}\lTpegTmpaSeq{%
+  \MapTpegSeqInline\lTpegTmpaSeq{\typeout{[#1]}}%
+}{Failed}
+\IfTpegExtractTF\lTmpaTpeg{ab12}\lTpegTmpaSeq{%
+  \MapTpegSeqInline\lTpegTmpaSeq{\typeout{[#1]}}%
+}{Failed}
+\IfTpegExtractTF\lTmpaTpeg{abcd12345}\lTpegTmpaSeq{%
+  \MapTpegSeqInline\lTpegTmpaSeq{\typeout{[#1]}}%
+}{Failed}
+\ENDTEST
+
+\end{document}

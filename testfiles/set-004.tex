@@ -1,0 +1,20 @@
+\documentclass{article}
+\input{regression-test}
+\SetTpegTracing{+set}
+\begin{document}
+
+\START
+
+\BEGINTEST{pattern groups}
+\TestTpegSet\lTmpaTpeg{ {\TpegP{12} * \TpegP{34}} / \TpegP{ab} * \TpegP{cd} }
+\ENDTEST
+
+\BEGINTEST{pattern groups}
+\TestTpegSet\lTmpaTpeg{ !{\TpegP{12} * \TpegP{34}} / \TpegP{ab} * \TpegP{cd} }
+\ENDTEST
+
+\BEGINTEST{pattern groups}
+\TestTpegSet\lMyaTpeg{ {\TpegP{12} / \TpegP{46}} ^ {4} / \TpegP{ab} * \TpegP{cd} }
+\ENDTEST
+
+\end{document}

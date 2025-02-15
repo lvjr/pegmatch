@@ -1,0 +1,65 @@
+\documentclass{article}
+\input{regression-test}
+\SetTpegTracing{+match}
+\begin{document}
+
+\START
+
+\BEGINTEST{simple pattern P}
+\SetTpeg\lTmpaTpeg{\TpegP{}}
+\MatchTpeg\lTmpaTpeg{}
+\MatchTpeg\lTmpaTpeg{a}
+\ENDTEST
+
+\BEGINTEST{simple pattern P}
+\SetTpeg\lTmpaTpeg{\TpegP{ab}}
+\MatchTpeg\lTmpaTpeg{cdef}
+\MatchTpeg\lTmpaTpeg{abcd}
+\MatchTpeg\lTmpaTpeg{ abcd}
+\MatchTpeg\lTmpaTpeg{a bcd}
+\ENDTEST
+
+\BEGINTEST{simple pattern Q}
+\SetTpeg\lTmpaTpeg{\TpegQ{1}}
+\MatchTpeg\lTmpaTpeg{}
+\MatchTpeg\lTmpaTpeg{ }
+\MatchTpeg\lTmpaTpeg{a}
+
+\ENDTEST
+
+\BEGINTEST{simple pattern Q}
+\SetTpeg\lTmpaTpeg{\TpegQ{3}}
+\MatchTpeg\lTmpaTpeg{a}
+\MatchTpeg\lTmpaTpeg{a }
+\MatchTpeg\lTmpaTpeg{a b}
+\MatchTpeg\lTmpaTpeg{a bc}
+\ENDTEST
+
+\BEGINTEST{simple pattern R}
+\SetTpeg\lTmpaTpeg{\TpegR{AZ}}
+\MatchTpeg\lTmpaTpeg{12}
+\MatchTpeg\lTmpaTpeg{Aa}
+\MatchTpeg\lTmpaTpeg{Qq}
+\MatchTpeg\lTmpaTpeg{Zz}
+\MatchTpeg\lTmpaTpeg{aA}
+\ENDTEST
+
+\BEGINTEST{simple pattern R}
+\SetTpeg\lTmpaTpeg{\TpegR{AZaz}}
+\MatchTpeg\lTmpaTpeg{12}
+\MatchTpeg\lTmpaTpeg{Qq}
+\MatchTpeg\lTmpaTpeg{[]}
+\MatchTpeg\lTmpaTpeg{qQ}
+\MatchTpeg\lTmpaTpeg{||}
+\ENDTEST
+
+\BEGINTEST{simple pattern S}
+\SetTpeg\lTmpaTpeg{\TpegS{13579}}
+\MatchTpeg\lTmpaTpeg{123}
+\MatchTpeg\lTmpaTpeg{456}
+\MatchTpeg\lTmpaTpeg{789}
+\MatchTpeg\lTmpaTpeg{abc}
+\MatchTpeg\lTmpaTpeg{|_|}
+\ENDTEST
+
+\end{document}

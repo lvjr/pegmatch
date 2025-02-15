@@ -1,0 +1,162 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: simple capture
+============================================================
+StartMatch{12ab}
+  StartConcat{12ab}
+  StartCp
+  StopCp:true,1
+    StartRepeat{1}{12ab}
+      StartR{az}{12ab}
+      StopR:false,1
+    StopRepeat:false,1
+  StopConcat:false,1
+StopMatch:false,1
+StartMatch{ab12}
+  StartConcat{ab12}
+  StartCp
+  StopCp:true,1
+    StartRepeat{1}{ab12}
+      StartR{az}{ab12}
+      StopR:true,2
+      StartR{az}{b12}
+      StopR:true,2
+      StartR{az}{12}
+      StopR:false,1
+    StopRepeat:true,3
+  StartCp
+  StopCp:true,3
+    StartRepeat{1}{12}
+      StartR{09}{12}
+      StopR:true,2
+      StartR{09}{2}
+      StopR:true,2
+      StartR{09}{}
+      StopR:false,1
+    StopRepeat:true,3
+  StartCp
+  StopCp:true,5
+  StopConcat:true,5
+StopMatch:true,5
+[1]
+[3]
+[5]
+StartMatch{abcd12345}
+  StartConcat{abcd12345}
+  StartCp
+  StopCp:true,1
+    StartRepeat{1}{abcd12345}
+      StartR{az}{abcd12345}
+      StopR:true,2
+      StartR{az}{bcd12345}
+      StopR:true,2
+      StartR{az}{cd12345}
+      StopR:true,2
+      StartR{az}{d12345}
+      StopR:true,2
+      StartR{az}{12345}
+      StopR:false,1
+    StopRepeat:true,5
+  StartCp
+  StopCp:true,5
+    StartRepeat{1}{12345}
+      StartR{09}{12345}
+      StopR:true,2
+      StartR{09}{2345}
+      StopR:true,2
+      StartR{09}{345}
+      StopR:true,2
+      StartR{09}{45}
+      StopR:true,2
+      StartR{09}{5}
+      StopR:true,2
+      StartR{09}{}
+      StopR:false,1
+    StopRepeat:true,6
+  StartCp
+  StopCp:true,10
+  StopConcat:true,10
+StopMatch:true,10
+[1]
+[5]
+[10]
+============================================================
+============================================================
+TEST 2: position capture
+============================================================
+StartMatch{12ab}
+  StartConcat{12ab}
+    StartC{12ab}
+      StartRepeat{1}{12ab}
+        StartR{az}{12ab}
+        StopR:false,1
+      StopRepeat:false,1
+    StopC:false,1
+  StopConcat:false,1
+StopMatch:false,1
+StartMatch{ab12}
+  StartConcat{ab12}
+    StartC{ab12}
+      StartRepeat{1}{ab12}
+        StartR{az}{ab12}
+        StopR:true,2
+        StartR{az}{b12}
+        StopR:true,2
+        StartR{az}{12}
+        StopR:false,1
+      StopRepeat:true,3
+    StopC:true,3
+    StartC{12}
+      StartRepeat{1}{12}
+        StartR{09}{12}
+        StopR:true,2
+        StartR{09}{2}
+        StopR:true,2
+        StartR{09}{}
+        StopR:false,1
+      StopRepeat:true,3
+    StopC:true,3
+  StopConcat:true,5
+StopMatch:true,5
+[ab]
+[12]
+StartMatch{abcd12345}
+  StartConcat{abcd12345}
+    StartC{abcd12345}
+      StartRepeat{1}{abcd12345}
+        StartR{az}{abcd12345}
+        StopR:true,2
+        StartR{az}{bcd12345}
+        StopR:true,2
+        StartR{az}{cd12345}
+        StopR:true,2
+        StartR{az}{d12345}
+        StopR:true,2
+        StartR{az}{12345}
+        StopR:false,1
+      StopRepeat:true,5
+    StopC:true,5
+    StartC{12345}
+      StartRepeat{1}{12345}
+        StartR{09}{12345}
+        StopR:true,2
+        StartR{09}{2345}
+        StopR:true,2
+        StartR{09}{345}
+        StopR:true,2
+        StartR{09}{45}
+        StopR:true,2
+        StartR{09}{5}
+        StopR:true,2
+        StartR{09}{}
+        StopR:false,1
+      StopRepeat:true,6
+    StopC:true,6
+  StopConcat:true,10
+StopMatch:true,10
+[abcd]
+[12345]
+============================================================
+[1
+] (match-006.aux)

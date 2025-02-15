@@ -1,0 +1,16 @@
+\documentclass{article}
+\input{regression-test}
+\SetTpegTracing{+set}
+\begin{document}
+
+\START
+
+\NewTpeg\lMyWordTpeg
+\NewTpeg\lMyAnywhereTpeg
+
+\BEGINTEST{tpeg variables}
+\TestTpegSet\lMyWordTpeg{\TpegR{AZaz} ^ {3}}
+\TestTpegSet\lMyAnywhereTpeg{\lMyWordTpeg / \TpegQ{1} * \lMyAnywhereTpeg}
+\ENDTEST
+
+\end{document}

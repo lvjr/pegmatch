@@ -1,0 +1,409 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: multiple operators
+============================================================
+StartMatch{}
+  StartConcat{}
+    StartNot{}
+      StartP{cd}{}
+      StopP:false,1
+    StopNot:true,1
+    StartQ{1}{}
+    StopQ:false,1
+  StopConcat:false,1
+StopMatch:false,1
+StartMatch{c}
+  StartConcat{c}
+    StartNot{c}
+      StartP{cd}{c}
+      StopP:false,2
+    StopNot:true,1
+    StartQ{1}{c}
+    StopQ:true,2
+  StopConcat:true,2
+StopMatch:true,2
+StartMatch{cde}
+  StartConcat{cde}
+    StartNot{cde}
+      StartP{cd}{cde}
+      StopP:true,3
+    StopNot:false,1
+  StopConcat:false,1
+StopMatch:false,1
+StartMatch{abc}
+  StartConcat{abc}
+    StartNot{abc}
+      StartP{cd}{abc}
+      StopP:false,1
+    StopNot:true,1
+    StartQ{1}{abc}
+    StopQ:true,2
+  StopConcat:true,2
+StopMatch:true,2
+============================================================
+============================================================
+TEST 2: multiple operators
+============================================================
+StartMatch{}
+  StartConcat{}
+    StartNot{}
+      StartR{an}{}
+      StopR:false,1
+    StopNot:true,1
+    StartQ{1}{}
+    StopQ:false,1
+  StopConcat:false,1
+StopMatch:false,1
+StartMatch{cc}
+  StartConcat{cc}
+    StartNot{cc}
+      StartR{an}{cc}
+      StopR:true,2
+    StopNot:false,1
+  StopConcat:false,1
+StopMatch:false,1
+StartMatch{nn}
+  StartConcat{nn}
+    StartNot{nn}
+      StartR{an}{nn}
+      StopR:true,2
+    StopNot:false,1
+  StopConcat:false,1
+StopMatch:false,1
+StartMatch{zz}
+  StartConcat{zz}
+    StartNot{zz}
+      StartR{an}{zz}
+      StopR:false,1
+    StopNot:true,1
+    StartQ{1}{zz}
+    StopQ:true,2
+  StopConcat:true,2
+StopMatch:true,2
+============================================================
+============================================================
+TEST 3: multiple operators
+============================================================
+StartMatch{}
+  StartConcat{}
+    StartNot{}
+      StartR{AZaz}{}
+      StopR:false,1
+    StopNot:true,1
+    StartQ{1}{}
+    StopQ:false,1
+  StopConcat:false,1
+StopMatch:false,1
+StartMatch{[]}
+  StartConcat{[]}
+    StartNot{[]}
+      StartR{AZaz}{[]}
+      StopR:false,1
+    StopNot:true,1
+    StartQ{1}{[]}
+    StopQ:true,2
+  StopConcat:true,2
+StopMatch:true,2
+StartMatch{X2}
+  StartConcat{X2}
+    StartNot{X2}
+      StartR{AZaz}{X2}
+      StopR:true,2
+    StopNot:false,1
+  StopConcat:false,1
+StopMatch:false,1
+StartMatch{12}
+  StartConcat{12}
+    StartNot{12}
+      StartR{AZaz}{12}
+      StopR:false,1
+    StopNot:true,1
+    StartQ{1}{12}
+    StopQ:true,2
+  StopConcat:true,2
+StopMatch:true,2
+StartMatch{x2}
+  StartConcat{x2}
+    StartNot{x2}
+      StartR{AZaz}{x2}
+      StopR:true,2
+    StopNot:false,1
+  StopConcat:false,1
+StopMatch:false,1
+StartMatch{12}
+  StartConcat{12}
+    StartNot{12}
+      StartR{AZaz}{12}
+      StopR:false,1
+    StopNot:true,1
+    StartQ{1}{12}
+    StopQ:true,2
+  StopConcat:true,2
+StopMatch:true,2
+============================================================
+============================================================
+TEST 4: multiple operators
+============================================================
+StartMatch{}
+  StartConcat{}
+    StartNot{}
+      StartS{asc}{}
+      StopS:false,1
+    StopNot:true,1
+    StartQ{1}{}
+    StopQ:false,1
+  StopConcat:false,1
+StopMatch:false,1
+StartMatch{aa}
+  StartConcat{aa}
+    StartNot{aa}
+      StartS{asc}{aa}
+      StopS:true,2
+    StopNot:false,1
+  StopConcat:false,1
+StopMatch:false,1
+StartMatch{bb}
+  StartConcat{bb}
+    StartNot{bb}
+      StartS{asc}{bb}
+      StopS:false,1
+    StopNot:true,1
+    StartQ{1}{bb}
+    StopQ:true,2
+  StopConcat:true,2
+StopMatch:true,2
+StartMatch{cc}
+  StartConcat{cc}
+    StartNot{cc}
+      StartS{asc}{cc}
+      StopS:true,2
+    StopNot:false,1
+  StopConcat:false,1
+StopMatch:false,1
+============================================================
+============================================================
+TEST 5: multiple operators with errors
+============================================================
+StartMatch{}
+  StartChoice{}
+    StartConcat{}
+      StartP{ab}{}
+      StopP:false,1
+    StopConcat:false,1
+    StartConcat{}
+      StartP{12}{}
+      StopP:false,1
+    StopConcat:false,1
+  StopChoice:false,1
+StopMatch:false,1
+StartMatch{*****}
+  StartChoice{*****}
+    StartConcat{*****}
+      StartP{ab}{*****}
+      StopP:false,1
+    StopConcat:false,1
+    StartConcat{*****}
+      StartP{12}{*****}
+      StopP:false,1
+    StopConcat:false,1
+  StopChoice:false,1
+StopMatch:false,1
+StartMatch{abxyz}
+  StartChoice{abxyz}
+    StartConcat{abxyz}
+      StartP{ab}{abxyz}
+      StopP:true,3
+      StartQ{1}{xyz}
+      StopQ:true,2
+      StartP{de}{yz}
+      StopP:false,1
+    StopConcat:false,4
+    StartConcat{abxyz}
+      StartP{12}{abxyz}
+      StopP:false,1
+    StopConcat:false,1
+  StopChoice:false,1
+StopMatch:false,1
+StartMatch{ab0de}
+  StartChoice{ab0de}
+    StartConcat{ab0de}
+      StartP{ab}{ab0de}
+      StopP:true,3
+      StartQ{1}{0de}
+      StopQ:true,2
+      StartP{de}{de}
+      StopP:true,3
+    StopConcat:true,6
+  StopChoice:true,6
+StopMatch:true,6
+StartMatch{12xyz}
+  StartChoice{12xyz}
+    StartConcat{12xyz}
+      StartP{ab}{12xyz}
+      StopP:false,1
+    StopConcat:false,1
+    StartConcat{12xyz}
+      StartP{12}{12xyz}
+      StopP:true,3
+      StartQ{2}{xyz}
+      StopQ:true,3
+      StartP{56}{z}
+      StopP:false,1
+    StopConcat:false,5
+  StopChoice:false,1
+StopMatch:false,1
+StartMatch{12xy56}
+  StartChoice{12xy56}
+    StartConcat{12xy56}
+      StartP{ab}{12xy56}
+      StopP:false,1
+    StopConcat:false,1
+    StartConcat{12xy56}
+      StartP{12}{12xy56}
+      StopP:true,3
+      StartQ{2}{xy56}
+      StopQ:true,3
+      StartP{56}{56}
+      StopP:true,3
+    StopConcat:true,7
+  StopChoice:true,7
+StopMatch:true,7
+============================================================
+============================================================
+TEST 6: multiple operators with errors
+============================================================
+StartMatch{}
+  StartChoice{}
+    StartRepeat{4}{}
+      StartR{AZ}{}
+      StopR:false,1
+    StopRepeat:false,1
+    StartConcat{}
+      StartRepeat{3}{}
+        StartR{09}{}
+        StopR:false,1
+      StopRepeat:false,1
+    StopConcat:false,1
+  StopChoice:false,1
+StopMatch:false,1
+StartMatch{ABC}
+  StartChoice{ABC}
+    StartRepeat{4}{ABC}
+      StartR{AZ}{ABC}
+      StopR:true,2
+      StartR{AZ}{BC}
+      StopR:true,2
+      StartR{AZ}{C}
+      StopR:true,2
+      StartR{AZ}{}
+      StopR:false,1
+    StopRepeat:false,4
+    StartConcat{ABC}
+      StartRepeat{3}{ABC}
+        StartR{09}{ABC}
+        StopR:false,1
+      StopRepeat:false,1
+    StopConcat:false,1
+  StopChoice:false,1
+StopMatch:false,1
+StartMatch{ABCd}
+  StartChoice{ABCd}
+    StartRepeat{4}{ABCd}
+      StartR{AZ}{ABCd}
+      StopR:true,2
+      StartR{AZ}{BCd}
+      StopR:true,2
+      StartR{AZ}{Cd}
+      StopR:true,2
+      StartR{AZ}{d}
+      StopR:false,1
+    StopRepeat:false,4
+    StartConcat{ABCd}
+      StartRepeat{3}{ABCd}
+        StartR{09}{ABCd}
+        StopR:false,1
+      StopRepeat:false,1
+    StopConcat:false,1
+  StopChoice:false,1
+StopMatch:false,1
+StartMatch{ABCD}
+  StartChoice{ABCD}
+    StartRepeat{4}{ABCD}
+      StartR{AZ}{ABCD}
+      StopR:true,2
+      StartR{AZ}{BCD}
+      StopR:true,2
+      StartR{AZ}{CD}
+      StopR:true,2
+      StartR{AZ}{D}
+      StopR:true,2
+      StartR{AZ}{}
+      StopR:false,1
+    StopRepeat:true,5
+  StopChoice:true,5
+StopMatch:true,5
+StartMatch{12x}
+  StartChoice{12x}
+    StartRepeat{4}{12x}
+      StartR{AZ}{12x}
+      StopR:false,1
+    StopRepeat:false,1
+    StartConcat{12x}
+      StartRepeat{3}{12x}
+        StartR{09}{12x}
+        StopR:true,2
+        StartR{09}{2x}
+        StopR:true,2
+        StartR{09}{x}
+        StopR:false,1
+      StopRepeat:false,3
+    StopConcat:false,1
+  StopChoice:false,1
+StopMatch:false,1
+StartMatch{159x}
+  StartChoice{159x}
+    StartRepeat{4}{159x}
+      StartR{AZ}{159x}
+      StopR:false,1
+    StopRepeat:false,1
+    StartConcat{159x}
+      StartRepeat{3}{159x}
+        StartR{09}{159x}
+        StopR:true,2
+        StartR{09}{59x}
+        StopR:true,2
+        StartR{09}{9x}
+        StopR:true,2
+        StartR{09}{x}
+        StopR:false,1
+      StopRepeat:true,4
+      StartS{abcd}{x}
+      StopS:false,1
+    StopConcat:false,4
+  StopChoice:false,1
+StopMatch:false,1
+StartMatch{159c}
+  StartChoice{159c}
+    StartRepeat{4}{159c}
+      StartR{AZ}{159c}
+      StopR:false,1
+    StopRepeat:false,1
+    StartConcat{159c}
+      StartRepeat{3}{159c}
+        StartR{09}{159c}
+        StopR:true,2
+        StartR{09}{59c}
+        StopR:true,2
+        StartR{09}{9c}
+        StopR:true,2
+        StartR{09}{c}
+        StopR:false,1
+      StopRepeat:true,4
+      StartS{abcd}{c}
+      StopS:true,2
+    StopConcat:true,5
+  StopChoice:true,5
+StopMatch:true,5
+============================================================
+(match-003.aux)

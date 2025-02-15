@@ -1,0 +1,331 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: choice operator
+============================================================
+StartMatch{cdef}
+  StartChoice{cdef}
+    StartP{ab}{cdef}
+    StopP:false,1
+    StartP{mn}{cdef}
+    StopP:false,1
+    StartP{uv}{cdef}
+    StopP:false,1
+  StopChoice:false,1
+StopMatch:false,1
+StartMatch{abcd}
+  StartChoice{abcd}
+    StartP{ab}{abcd}
+    StopP:true,3
+  StopChoice:true,3
+StopMatch:true,3
+StartMatch{uvwx}
+  StartChoice{uvwx}
+    StartP{ab}{uvwx}
+    StopP:false,1
+    StartP{mn}{uvwx}
+    StopP:false,1
+    StartP{uv}{uvwx}
+    StopP:true,3
+  StopChoice:true,3
+StopMatch:true,3
+============================================================
+============================================================
+TEST 2: concat operator
+============================================================
+StartMatch{cdef}
+  StartConcat{cdef}
+    StartP{ab}{cdef}
+    StopP:false,1
+  StopConcat:false,1
+StopMatch:false,1
+StartMatch{abcd}
+  StartConcat{abcd}
+    StartP{ab}{abcd}
+    StopP:true,3
+    StartP{mn}{cd}
+    StopP:false,1
+  StopConcat:false,3
+StopMatch:false,1
+StartMatch{abmnxy}
+  StartConcat{abmnxy}
+    StartP{ab}{abmnxy}
+    StopP:true,3
+    StartP{mn}{mnxy}
+    StopP:true,3
+    StartP{uv}{xy}
+    StopP:false,1
+  StopConcat:false,5
+StopMatch:false,1
+StartMatch{abmnuv}
+  StartConcat{abmnuv}
+    StartP{ab}{abmnuv}
+    StopP:true,3
+    StartP{mn}{mnuv}
+    StopP:true,3
+    StartP{uv}{uv}
+    StopP:true,3
+  StopConcat:true,7
+StopMatch:true,7
+StartMatch{abmnuvxy}
+  StartConcat{abmnuvxy}
+    StartP{ab}{abmnuvxy}
+    StopP:true,3
+    StartP{mn}{mnuvxy}
+    StopP:true,3
+    StartP{uv}{uvxy}
+    StopP:true,3
+  StopConcat:true,7
+StopMatch:true,7
+============================================================
+============================================================
+TEST 3: not predicate operator
+============================================================
+StartMatch{dddd}
+  StartNot{dddd}
+    StartP{ddd}{dddd}
+    StopP:true,4
+  StopNot:false,1
+StopMatch:false,1
+StartMatch{eeee}
+  StartNot{eeee}
+    StartP{ddd}{eeee}
+    StopP:false,1
+  StopNot:true,1
+StopMatch:true,1
+============================================================
+============================================================
+TEST 4: and predicate operator
+============================================================
+StartMatch{dddd}
+  StartAnd{dddd}
+    StartP{eee}{dddd}
+    StopP:false,1
+  StopAnd:false,1
+StopMatch:false,1
+StartMatch{eeee}
+  StartAnd{eeee}
+    StartP{eee}{eeee}
+    StopP:true,4
+  StopAnd:true,1
+StopMatch:true,1
+============================================================
+============================================================
+TEST 5: repeat operator
+============================================================
+StartMatch{temp}
+  StartRepeat{2}{temp}
+    StartP{test}{temp}
+    StopP:false,3
+  StopRepeat:false,1
+StopMatch:false,1
+StartMatch{test}
+  StartRepeat{2}{test}
+    StartP{test}{test}
+    StopP:true,5
+    StartP{test}{}
+    StopP:false,1
+  StopRepeat:false,5
+StopMatch:false,1
+StartMatch{testtemp}
+  StartRepeat{2}{testtemp}
+    StartP{test}{testtemp}
+    StopP:true,5
+    StartP{test}{temp}
+    StopP:false,3
+  StopRepeat:false,5
+StopMatch:false,1
+StartMatch{testtest}
+  StartRepeat{2}{testtest}
+    StartP{test}{testtest}
+    StopP:true,5
+    StartP{test}{test}
+    StopP:true,5
+    StartP{test}{}
+    StopP:false,1
+  StopRepeat:true,9
+StopMatch:true,9
+StartMatch{testtesttemp}
+  StartRepeat{2}{testtesttemp}
+    StartP{test}{testtesttemp}
+    StopP:true,5
+    StartP{test}{testtemp}
+    StopP:true,5
+    StartP{test}{temp}
+    StopP:false,3
+  StopRepeat:true,9
+StopMatch:true,9
+StartMatch{testtesttest}
+  StartRepeat{2}{testtesttest}
+    StartP{test}{testtesttest}
+    StopP:true,5
+    StartP{test}{testtest}
+    StopP:true,5
+    StartP{test}{test}
+    StopP:true,5
+    StartP{test}{}
+    StopP:false,1
+  StopRepeat:true,13
+StopMatch:true,13
+StartMatch{testtesttesttemp}
+  StartRepeat{2}{testtesttesttemp}
+    StartP{test}{testtesttesttemp}
+    StopP:true,5
+    StartP{test}{testtesttemp}
+    StopP:true,5
+    StartP{test}{testtemp}
+    StopP:true,5
+    StartP{test}{temp}
+    StopP:false,3
+  StopRepeat:true,13
+StopMatch:true,13
+============================================================
+============================================================
+TEST 6: repeat operator
+============================================================
+StartMatch{temp}
+  StartRepeat{0}{temp}
+    StartP{test}{temp}
+    StopP:false,3
+  StopRepeat:true,1
+StopMatch:true,1
+StartMatch{test}
+  StartRepeat{0}{test}
+    StartP{test}{test}
+    StopP:true,5
+    StartP{test}{}
+    StopP:false,1
+  StopRepeat:true,5
+StopMatch:true,5
+StartMatch{testtemp}
+  StartRepeat{0}{testtemp}
+    StartP{test}{testtemp}
+    StopP:true,5
+    StartP{test}{temp}
+    StopP:false,3
+  StopRepeat:true,5
+StopMatch:true,5
+StartMatch{testtest}
+  StartRepeat{0}{testtest}
+    StartP{test}{testtest}
+    StopP:true,5
+    StartP{test}{test}
+    StopP:true,5
+    StartP{test}{}
+    StopP:false,1
+  StopRepeat:true,9
+StopMatch:true,9
+StartMatch{testtesttemp}
+  StartRepeat{0}{testtesttemp}
+    StartP{test}{testtesttemp}
+    StopP:true,5
+    StartP{test}{testtemp}
+    StopP:true,5
+    StartP{test}{temp}
+    StopP:false,3
+  StopRepeat:true,9
+StopMatch:true,9
+StartMatch{testtesttest}
+  StartRepeat{0}{testtesttest}
+    StartP{test}{testtesttest}
+    StopP:true,5
+    StartP{test}{testtest}
+    StopP:true,5
+    StartP{test}{test}
+    StopP:true,5
+    StartP{test}{}
+    StopP:false,1
+  StopRepeat:true,13
+StopMatch:true,13
+StartMatch{testtesttesttemp}
+  StartRepeat{0}{testtesttesttemp}
+    StartP{test}{testtesttesttemp}
+    StopP:true,5
+    StartP{test}{testtesttemp}
+    StopP:true,5
+    StartP{test}{testtemp}
+    StopP:true,5
+    StartP{test}{temp}
+    StopP:false,3
+  StopRepeat:true,13
+StopMatch:true,13
+============================================================
+============================================================
+TEST 7: repeat operator
+============================================================
+StartMatch{temp}
+  StartRepeat{-1}{temp}
+    StartP{test}{temp}
+    StopP:false,3
+  StopRepeat:true,1
+StopMatch:true,1
+StartMatch{test}
+  StartRepeat{-1}{test}
+    StartP{test}{test}
+    StopP:true,5
+  StopRepeat:true,5
+StopMatch:true,5
+StartMatch{testtemp}
+  StartRepeat{-1}{testtemp}
+    StartP{test}{testtemp}
+    StopP:true,5
+  StopRepeat:true,5
+StopMatch:true,5
+StartMatch{testtest}
+  StartRepeat{-1}{testtest}
+    StartP{test}{testtest}
+    StopP:true,5
+  StopRepeat:true,5
+StopMatch:true,5
+============================================================
+============================================================
+TEST 8: repeat operator
+============================================================
+StartMatch{temp}
+  StartRepeat{-2}{temp}
+    StartP{test}{temp}
+    StopP:false,3
+  StopRepeat:true,1
+StopMatch:true,1
+StartMatch{test}
+  StartRepeat{-2}{test}
+    StartP{test}{test}
+    StopP:true,5
+    StartP{test}{}
+    StopP:false,1
+  StopRepeat:true,5
+StopMatch:true,5
+StartMatch{testtemp}
+  StartRepeat{-2}{testtemp}
+    StartP{test}{testtemp}
+    StopP:true,5
+    StartP{test}{temp}
+    StopP:false,3
+  StopRepeat:true,5
+StopMatch:true,5
+StartMatch{testtest}
+  StartRepeat{-2}{testtest}
+    StartP{test}{testtest}
+    StopP:true,5
+    StartP{test}{test}
+    StopP:true,5
+  StopRepeat:true,9
+StopMatch:true,9
+StartMatch{testtesttemp}
+  StartRepeat{-2}{testtesttemp}
+    StartP{test}{testtesttemp}
+    StopP:true,5
+    StartP{test}{testtemp}
+    StopP:true,5
+  StopRepeat:true,9
+StopMatch:true,9
+StartMatch{testtesttest}
+  StartRepeat{-2}{testtesttest}
+    StartP{test}{testtesttest}
+    StopP:true,5
+    StartP{test}{testtest}
+    StopP:true,5
+  StopRepeat:true,9
+StopMatch:true,9
+============================================================
+(match-002.aux)

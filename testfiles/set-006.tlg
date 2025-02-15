@@ -1,0 +1,84 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: simple capture
+============================================================
+> Input=\TpegCp * \TpegR {az} ^ {1} * \TpegCp * \TpegR {09} ^ {1} * \TpegCp .
+> Compiled tpeg variable \lTmpaTpeg:
+\TpegConcat 
+{
+  {
+    \TpegCp 
+  }
+  {
+    \TpegRepeat 
+    {
+      \TpegR 
+      {
+        az
+      }
+    }
+    {
+      1
+    }
+  }
+  {
+    \TpegCp 
+  }
+  {
+    \TpegRepeat 
+    {
+      \TpegR 
+      {
+        09
+      }
+    }
+    {
+      1
+    }
+  }
+  {
+    \TpegCp 
+  }
+}
+============================================================
+============================================================
+TEST 2: position capture
+============================================================
+> Input=\TpegC {\TpegR {az}^{1}} * \TpegC {\TpegR {09}^{1}}.
+> Compiled tpeg variable \lTmpaTpeg:
+\TpegConcat 
+{
+  {
+    \TpegC 
+    {
+      \TpegRepeat 
+      {
+        \TpegR 
+        {
+          az
+        }
+      }
+      {
+        1
+      }
+    }
+  }
+  {
+    \TpegC 
+    {
+      \TpegRepeat 
+      {
+        \TpegR 
+        {
+          09
+        }
+      }
+      {
+        1
+      }
+    }
+  }
+}
+============================================================
+(set-006.aux)

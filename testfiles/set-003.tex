@@ -1,0 +1,28 @@
+\documentclass{article}
+\input{regression-test}
+\SetTpegTracing{+set}
+\begin{document}
+
+\START
+
+\BEGINTEST{multiple operators}
+\TestTpegSet\lTmpaTpeg{ !\TpegP{cd} * \TpegP{ab} / !\TpegP{uv} * \TpegP{de} / !\TpegP{wx} * \TpegP{vw} }
+\ENDTEST
+
+\BEGINTEST{multiple operators}
+\TestTpegSet\lTmpaTpeg{ ! \TpegP{cd} * !\TpegP{de} * \TpegP{ab} / ! \TpegP{vw} * !\TpegP{wx} * \TpegP{uv} }
+\ENDTEST
+
+\BEGINTEST{multiple operators}
+\TestTpegSet\lTmpaTpeg{ !\TpegP{ab} / !\TpegP{de} * !\TpegP{uv} * \TpegP{cd} / !\TpegP{wx} * \TpegP{vw} }
+\ENDTEST
+
+\BEGINTEST{multiple operators}
+\TestTpegSet\lTmpaTpeg{ \TpegP{12} ^ {4} / \TpegP{ab} * \TpegP{cd} }
+\ENDTEST
+
+\BEGINTEST{multiple operators with errors}
+\TestTpegSet\lTmpaTpeg{ \TpegP{12} ^ {4} ^ 1 / \TpegP{ab} * \TpegP{cd} }
+\ENDTEST
+
+\end{document}

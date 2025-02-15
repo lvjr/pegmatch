@@ -1,0 +1,143 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: simple pattern P
+============================================================
+StartMatch{}
+  StartP{}{}
+  StopP:true,1
+StopMatch:true,1
+StartMatch{a}
+  StartP{}{a}
+  StopP:true,1
+StopMatch:true,1
+============================================================
+============================================================
+TEST 2: simple pattern P
+============================================================
+StartMatch{cdef}
+  StartP{ab}{cdef}
+  StopP:false,1
+StopMatch:false,1
+StartMatch{abcd}
+  StartP{ab}{abcd}
+  StopP:true,3
+StopMatch:true,3
+StartMatch{ abcd}
+  StartP{ab}{ abcd}
+  StopP:false,1
+StopMatch:false,1
+StartMatch{a bcd}
+  StartP{ab}{a bcd}
+  StopP:false,2
+StopMatch:false,1
+============================================================
+============================================================
+TEST 3: simple pattern Q
+============================================================
+StartMatch{}
+  StartQ{1}{}
+  StopQ:false,1
+StopMatch:false,1
+StartMatch{ }
+  StartQ{1}{ }
+  StopQ:true,2
+StopMatch:true,2
+StartMatch{a}
+  StartQ{1}{a}
+  StopQ:true,2
+StopMatch:true,2
+============================================================
+============================================================
+TEST 4: simple pattern Q
+============================================================
+StartMatch{a}
+  StartQ{3}{a}
+  StopQ:false,1
+StopMatch:false,1
+StartMatch{a }
+  StartQ{3}{a }
+  StopQ:false,1
+StopMatch:false,1
+StartMatch{a b}
+  StartQ{3}{a b}
+  StopQ:true,4
+StopMatch:true,4
+StartMatch{a bc}
+  StartQ{3}{a bc}
+  StopQ:true,4
+StopMatch:true,4
+============================================================
+============================================================
+TEST 5: simple pattern R
+============================================================
+StartMatch{12}
+  StartR{AZ}{12}
+  StopR:false,1
+StopMatch:false,1
+StartMatch{Aa}
+  StartR{AZ}{Aa}
+  StopR:true,2
+StopMatch:true,2
+StartMatch{Qq}
+  StartR{AZ}{Qq}
+  StopR:true,2
+StopMatch:true,2
+StartMatch{Zz}
+  StartR{AZ}{Zz}
+  StopR:true,2
+StopMatch:true,2
+StartMatch{aA}
+  StartR{AZ}{aA}
+  StopR:false,1
+StopMatch:false,1
+============================================================
+============================================================
+TEST 6: simple pattern R
+============================================================
+StartMatch{12}
+  StartR{AZaz}{12}
+  StopR:false,1
+StopMatch:false,1
+StartMatch{Qq}
+  StartR{AZaz}{Qq}
+  StopR:true,2
+StopMatch:true,2
+StartMatch{[]}
+  StartR{AZaz}{[]}
+  StopR:false,1
+StopMatch:false,1
+StartMatch{qQ}
+  StartR{AZaz}{qQ}
+  StopR:true,2
+StopMatch:true,2
+StartMatch{||}
+  StartR{AZaz}{||}
+  StopR:false,1
+StopMatch:false,1
+============================================================
+============================================================
+TEST 7: simple pattern S
+============================================================
+StartMatch{123}
+  StartS{13579}{123}
+  StopS:true,2
+StopMatch:true,2
+StartMatch{456}
+  StartS{13579}{456}
+  StopS:false,1
+StopMatch:false,1
+StartMatch{789}
+  StartS{13579}{789}
+  StopS:true,2
+StopMatch:true,2
+StartMatch{abc}
+  StartS{13579}{abc}
+  StopS:false,1
+StopMatch:false,1
+StartMatch{|_|}
+  StartS{13579}{|_|}
+  StopS:false,1
+StopMatch:false,1
+============================================================
+(match-001.aux)

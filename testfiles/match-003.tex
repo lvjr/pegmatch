@@ -1,0 +1,63 @@
+\documentclass{article}
+\input{regression-test}
+\SetTpegTracing{+match}
+\begin{document}
+
+\START
+
+\BEGINTEST{multiple operators}
+\SetTpeg\lTmpaTpeg{ !\TpegP{cd} * \TpegQ{1} }
+\MatchTpeg\lTmpaTpeg{}
+\MatchTpeg\lTmpaTpeg{c}
+\MatchTpeg\lTmpaTpeg{cde}
+\MatchTpeg\lTmpaTpeg{abc}
+\ENDTEST
+
+\BEGINTEST{multiple operators}
+\SetTpeg\lTmpaTpeg{ ! \TpegR{an} * \TpegQ{1} }
+\MatchTpeg\lTmpaTpeg{}
+\MatchTpeg\lTmpaTpeg{cc}
+\MatchTpeg\lTmpaTpeg{nn}
+\MatchTpeg\lTmpaTpeg{zz}
+\ENDTEST
+
+\BEGINTEST{multiple operators}
+\SetTpeg\lTmpaTpeg{ ! \TpegR{AZaz} * \TpegQ{1} }
+\MatchTpeg\lTmpaTpeg{}
+\MatchTpeg\lTmpaTpeg{[]}
+\MatchTpeg\lTmpaTpeg{X2}
+\MatchTpeg\lTmpaTpeg{12}
+\MatchTpeg\lTmpaTpeg{x2}
+\MatchTpeg\lTmpaTpeg{12}
+\ENDTEST
+
+\BEGINTEST{multiple operators}
+\SetTpeg\lTmpaTpeg{ ! \TpegS{asc} * \TpegQ{1} }
+\MatchTpeg\lTmpaTpeg{}
+\MatchTpeg\lTmpaTpeg{aa}
+\MatchTpeg\lTmpaTpeg{bb}
+\MatchTpeg\lTmpaTpeg{cc}
+\ENDTEST
+
+\BEGINTEST{multiple operators with errors}
+\SetTpeg\lTmpaTpeg{ \TpegP{ab} * \TpegQ{1} * \TpegP{de} / \TpegP{12} * \TpegQ{2} * \TpegP{56} }
+\MatchTpeg\lTmpaTpeg{}
+\MatchTpeg\lTmpaTpeg{*****}
+\MatchTpeg\lTmpaTpeg{abxyz}
+\MatchTpeg\lTmpaTpeg{ab0de}
+\MatchTpeg\lTmpaTpeg{12xyz}
+\MatchTpeg\lTmpaTpeg{12xy56}
+\ENDTEST
+
+\BEGINTEST{multiple operators with errors}
+\SetTpeg\lTmpaTpeg{ \TpegR{AZ} ^ {4} / \TpegR{09} ^ 3 * \TpegS{abcd} }
+\MatchTpeg\lTmpaTpeg{}
+\MatchTpeg\lTmpaTpeg{ABC}
+\MatchTpeg\lTmpaTpeg{ABCd}
+\MatchTpeg\lTmpaTpeg{ABCD}
+\MatchTpeg\lTmpaTpeg{12x}
+\MatchTpeg\lTmpaTpeg{159x}
+\MatchTpeg\lTmpaTpeg{159c}
+\ENDTEST
+
+\end{document}

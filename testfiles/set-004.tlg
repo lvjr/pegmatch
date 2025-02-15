@@ -1,0 +1,141 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: pattern groups
+============================================================
+> Input= {\TpegP {12} * \TpegP {34}} / \TpegP {ab} * \TpegP {cd} .
+> Compiled tpeg variable \lTmpaTpeg:
+\TpegChoice 
+{
+  {
+    \TpegConcat 
+    {
+      {
+        \TpegP 
+        {
+          12
+        }
+      }
+      {
+        \TpegP 
+        {
+          34
+        }
+      }
+    }
+  }
+  {
+    \TpegConcat 
+    {
+      {
+        \TpegP 
+        {
+          ab
+        }
+      }
+      {
+        \TpegP 
+        {
+          cd
+        }
+      }
+    }
+  }
+}
+============================================================
+============================================================
+TEST 2: pattern groups
+============================================================
+> Input= !{\TpegP {12} * \TpegP {34}} / \TpegP {ab} * \TpegP {cd} .
+> Compiled tpeg variable \lTmpaTpeg:
+\TpegChoice 
+{
+  {
+    \TpegNot 
+    {
+      \TpegConcat 
+      {
+        {
+          \TpegP 
+          {
+            12
+          }
+        }
+        {
+          \TpegP 
+          {
+            34
+          }
+        }
+      }
+    }
+  }
+  {
+    \TpegConcat 
+    {
+      {
+        \TpegP 
+        {
+          ab
+        }
+      }
+      {
+        \TpegP 
+        {
+          cd
+        }
+      }
+    }
+  }
+}
+============================================================
+============================================================
+TEST 3: pattern groups
+============================================================
+> Input= {\TpegP {12} / \TpegP {46}} ^ {4} / \TpegP {ab} * \TpegP {cd} .
+> Compiled tpeg variable \lMyaTpeg:
+\TpegChoice 
+{
+  {
+    \TpegRepeat 
+    {
+      \TpegChoice 
+      {
+        {
+          \TpegP 
+          {
+            12
+          }
+        }
+        {
+          \TpegP 
+          {
+            46
+          }
+        }
+      }
+    }
+    {
+      4
+    }
+  }
+  {
+    \TpegConcat 
+    {
+      {
+        \TpegP 
+        {
+          ab
+        }
+      }
+      {
+        \TpegP 
+        {
+          cd
+        }
+      }
+    }
+  }
+}
+============================================================
+(set-004.aux)

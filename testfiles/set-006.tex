@@ -1,0 +1,16 @@
+\documentclass{article}
+\input{regression-test}
+\SetTpegTracing{+set}
+\begin{document}
+
+\START
+
+\BEGINTEST{simple capture}
+\TestTpegSet\lTmpaTpeg{\TpegCp * \TpegR{az} ^ {1} * \TpegCp * \TpegR{09} ^ {1} * \TpegCp}
+\ENDTEST
+
+\BEGINTEST{position capture}
+\TestTpegSet\lTmpaTpeg{\TpegC{\TpegR{az}^{1}} * \TpegC{\TpegR{09}^{1}}}
+\ENDTEST
+
+\end{document}
