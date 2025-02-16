@@ -37,11 +37,11 @@
 \NewDocumentCommand\VT{m}{\texttt{\fakeverb{#1}}} % variable type
 \NewDocumentCommand\TT{m}{\texttt{\fakeverb{#1}}} % text
 
-\usepackage{tpeg}
+\usepackage{pegmatch}
 
 \begin{document}
 
-\title{\textsf{\color{green3}TPEG: Parsing Expression Grammars for TeX}}
+\title{\textsf{\color{green3}PEGMATCH: Parsing Expression Grammars for TeX}}
 \author{Jianrui Lyu (tolvjr@163.com)\\ \url{https://github.com/lvjr/tpeg}}
 \date{\mydate}
 \maketitle
@@ -52,14 +52,14 @@
 
 \section{Introduction}
 
-The \PP{tpeg} package ports PEG (Parsing Expression Grammars)%
+The \PP{pegmatch} package ports PEG (Parsing Expression Grammars)%
 \footnote{See Parsing Expression Grammars page: \url{https://bford.info/packrat/}.} to TeX.
 Following the design in LPEG (Parsing Expression Grammars for Lua),%
 \footnote{See Parsing Expression Grammars for Lua page: \url{https://www.inf.puc-rio.br/~roberto/lpeg/}.}
 it defines patterns as LaTeX3 variables, and offers several operators to compose patterns.
 
 In general, PEG matching is much more powerful than RE (Regular Expressions) matching.
-At this time, \PP{tpeg} package only supports TeX strings.%
+At this time, \PP{pegmatch} package only supports TeX strings.%
 \footnote{I started to write it for my \PP{codehigh} package to get rid of \PP{l3regex} dependency.}
 Also it is still in experimental status, hence some interfaces may change in future releases.
 
@@ -269,6 +269,6 @@ If you want to capture the substrings, you can modified the above example as fol
 
 \chapter{The Source Code}
 
-\dochighinput[language=latex/latex3]{tpeg.sty}
+\dochighinput[language=latex/latex3]{pegmatch.sty}
 
 \end{document}

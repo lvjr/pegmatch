@@ -1,7 +1,7 @@
 
-module = "tpeg"
+module = "pegmatch"
 
-sourcefiles = {"tpeg.sty"}
+sourcefiles = {"pegmatch.sty"}
 
 -- all files that match checksuppfiles in the supportdir are moved to build/test folder
 supportdir = "./testfiles"

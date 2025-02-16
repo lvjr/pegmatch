@@ -6,23 +6,23 @@
 \START
 
 \BEGINTEST{choice operator}
-\TestTpegSet\lTmpaTpeg{ \TpegP{ab} / \TpegP{cd} / \TpegP{de} }
+\SetTpeg\lTmpaTpeg{ \TpegP{ab} / \TpegP{cd} / \TpegP{de} }
 \ENDTEST
 
 \BEGINTEST{concat operator}
-\TestTpegSet\lTmpaTpeg{ \TpegP{aa} * \TpegP{bb} * \TpegP{cc} }
+\SetTpeg\lTmpaTpeg{ \TpegP{aa} * \TpegP{bb} * \TpegP{cc} }
 \ENDTEST
 
 \BEGINTEST{not predicate operator}
-\TestTpegSet\lTmpaTpeg{ ! \TpegP{ddd} }
+\SetTpeg\lTmpaTpeg{ ! \TpegP{ddd} }
 \ENDTEST
 
 \BEGINTEST{and predicate operator}
-\TestTpegSet\lTmpaTpeg{ & \TpegP{eee} }
+\SetTpeg\lTmpaTpeg{ & \TpegP{eee} }
 \ENDTEST
 
 \BEGINTEST{repeat operator}
-\TestTpegSet\lTmpaTpeg{ \TpegP{test} ^ 4 }
+\SetTpeg\lTmpaTpeg{ \TpegP{test} ^ 4 }
 \ENDTEST
 
 \end{document}
