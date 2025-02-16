@@ -3,24 +3,24 @@ Don't change this file in any respect.
 ============================================================
 TEST 1: multiple operators
 ============================================================
-> Input= !\TpegP {cd} * \TpegP {ab} / !\TpegP {uv} * \TpegP {de} / !\TpegP {wx} * \TpegP {vw} .
-> Compiled tpeg variable \lTmpaTpeg:
-\TpegChoice 
+> Input= !\SpegP {cd} * \SpegP {ab} / !\SpegP {uv} * \SpegP {de} / !\SpegP {wx} * \SpegP {vw} .
+> Compiled speg variable \lTmpaSpeg:
+\SpegChoice 
 {
   {
-    \TpegConcat 
+    \SpegConcat 
     {
       {
-        \TpegNot 
+        \SpegNot 
         {
-          \TpegP 
+          \SpegP 
           {
             cd
           }
         }
       }
       {
-        \TpegP 
+        \SpegP 
         {
           ab
         }
@@ -28,19 +28,19 @@ TEST 1: multiple operators
     }
   }
   {
-    \TpegConcat 
+    \SpegConcat 
     {
       {
-        \TpegNot 
+        \SpegNot 
         {
-          \TpegP 
+          \SpegP 
           {
             uv
           }
         }
       }
       {
-        \TpegP 
+        \SpegP 
         {
           de
         }
@@ -48,19 +48,19 @@ TEST 1: multiple operators
     }
   }
   {
-    \TpegConcat 
+    \SpegConcat 
     {
       {
-        \TpegNot 
+        \SpegNot 
         {
-          \TpegP 
+          \SpegP 
           {
             wx
           }
         }
       }
       {
-        \TpegP 
+        \SpegP 
         {
           vw
         }
@@ -72,33 +72,33 @@ TEST 1: multiple operators
 ============================================================
 TEST 2: multiple operators
 ============================================================
-> Input= ! \TpegP {cd} * !\TpegP {de} * \TpegP {ab} / ! \TpegP {vw} * !\TpegP {wx} * \TpegP {uv} .
-> Compiled tpeg variable \lTmpaTpeg:
-\TpegChoice 
+> Input= ! \SpegP {cd} * !\SpegP {de} * \SpegP {ab} / ! \SpegP {vw} * !\SpegP {wx} * \SpegP {uv} .
+> Compiled speg variable \lTmpaSpeg:
+\SpegChoice 
 {
   {
-    \TpegConcat 
+    \SpegConcat 
     {
       {
-        \TpegNot 
+        \SpegNot 
         {
-          \TpegP 
+          \SpegP 
           {
             cd
           }
         }
       }
       {
-        \TpegNot 
+        \SpegNot 
         {
-          \TpegP 
+          \SpegP 
           {
             de
           }
         }
       }
       {
-        \TpegP 
+        \SpegP 
         {
           ab
         }
@@ -106,28 +106,28 @@ TEST 2: multiple operators
     }
   }
   {
-    \TpegConcat 
+    \SpegConcat 
     {
       {
-        \TpegNot 
+        \SpegNot 
         {
-          \TpegP 
+          \SpegP 
           {
             vw
           }
         }
       }
       {
-        \TpegNot 
+        \SpegNot 
         {
-          \TpegP 
+          \SpegP 
           {
             wx
           }
         }
       }
       {
-        \TpegP 
+        \SpegP 
         {
           uv
         }
@@ -139,42 +139,42 @@ TEST 2: multiple operators
 ============================================================
 TEST 3: multiple operators
 ============================================================
-> Input= !\TpegP {ab} / !\TpegP {de} * !\TpegP {uv} * \TpegP {cd} / !\TpegP {wx} * \TpegP {vw} .
-> Compiled tpeg variable \lTmpaTpeg:
-\TpegChoice 
+> Input= !\SpegP {ab} / !\SpegP {de} * !\SpegP {uv} * \SpegP {cd} / !\SpegP {wx} * \SpegP {vw} .
+> Compiled speg variable \lTmpaSpeg:
+\SpegChoice 
 {
   {
-    \TpegNot 
+    \SpegNot 
     {
-      \TpegP 
+      \SpegP 
       {
         ab
       }
     }
   }
   {
-    \TpegConcat 
+    \SpegConcat 
     {
       {
-        \TpegNot 
+        \SpegNot 
         {
-          \TpegP 
+          \SpegP 
           {
             de
           }
         }
       }
       {
-        \TpegNot 
+        \SpegNot 
         {
-          \TpegP 
+          \SpegP 
           {
             uv
           }
         }
       }
       {
-        \TpegP 
+        \SpegP 
         {
           cd
         }
@@ -182,19 +182,19 @@ TEST 3: multiple operators
     }
   }
   {
-    \TpegConcat 
+    \SpegConcat 
     {
       {
-        \TpegNot 
+        \SpegNot 
         {
-          \TpegP 
+          \SpegP 
           {
             wx
           }
         }
       }
       {
-        \TpegP 
+        \SpegP 
         {
           vw
         }
@@ -206,14 +206,14 @@ TEST 3: multiple operators
 ============================================================
 TEST 4: multiple operators
 ============================================================
-> Input= \TpegP {12} ^ {4} / \TpegP {ab} * \TpegP {cd} .
-> Compiled tpeg variable \lTmpaTpeg:
-\TpegChoice 
+> Input= \SpegP {12} ^ {4} / \SpegP {ab} * \SpegP {cd} .
+> Compiled speg variable \lTmpaSpeg:
+\SpegChoice 
 {
   {
-    \TpegRepeat 
+    \SpegRepeat 
     {
-      \TpegP 
+      \SpegP 
       {
         12
       }
@@ -223,16 +223,16 @@ TEST 4: multiple operators
     }
   }
   {
-    \TpegConcat 
+    \SpegConcat 
     {
       {
-        \TpegP 
+        \SpegP 
         {
           ab
         }
       }
       {
-        \TpegP 
+        \SpegP 
         {
           cd
         }
@@ -244,21 +244,21 @@ TEST 4: multiple operators
 ============================================================
 TEST 5: multiple operators with errors
 ============================================================
-> Input= \TpegP {12} ^ {4} ^ 1 / \TpegP {ab} * \TpegP {cd} .
-! Package tpeg Error: Invalid arguments '^ 1' for \TpegRepeat!
+> Input= \SpegP {12} ^ {4} ^ 1 / \SpegP {ab} * \SpegP {cd} .
+! Package speg Error: Invalid arguments '^ 1' for \SpegRepeat!
 Type <return> to continue.
  ...                                              
-l. ......{12} ^ {4} ^ 1 / \TpegP{ab} * \TpegP{cd} }
+l. ......{12} ^ {4} ^ 1 / \SpegP{ab} * \SpegP{cd} }
 LaTeX does not know anything more about this error, sorry.
 Try typing <return> to proceed.
 If that doesn't work, type X <return> to quit.
-> Compiled tpeg variable \lTmpaTpeg:
-\TpegChoice 
+> Compiled speg variable \lTmpaSpeg:
+\SpegChoice 
 {
   {
-    \TpegRepeat 
+    \SpegRepeat 
     {
-      \TpegP 
+      \SpegP 
       {
         12
       }
@@ -268,16 +268,16 @@ If that doesn't work, type X <return> to quit.
     }
   }
   {
-    \TpegConcat 
+    \SpegConcat 
     {
       {
-        \TpegP 
+        \SpegP 
         {
           ab
         }
       }
       {
-        \TpegP 
+        \SpegP 
         {
           cd
         }

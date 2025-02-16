@@ -1,16 +1,16 @@
 \documentclass{article}
 \input{regression-test}
-\SetTpegTracing{+set}
+\SetSpegTracing{+set}
 \begin{document}
 
 \START
 
 \BEGINTEST{simple capture}
-\SetTpeg\lTmpaTpeg{\TpegCp * \TpegR{az} ^ {1} * \TpegCp * \TpegR{09} ^ {1} * \TpegCp}
+\SetSpeg\lTmpaSpeg{\SpegCp * \SpegR{az} ^ {1} * \SpegCp * \SpegR{09} ^ {1} * \SpegCp}
 \ENDTEST
 
 \BEGINTEST{position capture}
-\SetTpeg\lTmpaTpeg{\TpegC{\TpegR{az}^{1}} * \TpegC{\TpegR{09}^{1}}}
+\SetSpeg\lTmpaSpeg{\SpegC{\SpegR{az}^{1}} * \SpegC{\SpegR{09}^{1}}}
 \ENDTEST
 
 \end{document}

@@ -1,65 +1,65 @@
 \documentclass{article}
 \input{regression-test}
-\SetTpegTracing{+match}
+\SetSpegTracing{+match}
 \begin{document}
 
 \START
 
 \BEGINTEST{simple pattern P}
-\SetTpeg\lTmpaTpeg{\TpegP{}}
-\MatchTpeg\lTmpaTpeg{}
-\MatchTpeg\lTmpaTpeg{a}
+\SetSpeg\lTmpaSpeg{\SpegP{}}
+\MatchSpeg\lTmpaSpeg{}
+\MatchSpeg\lTmpaSpeg{a}
 \ENDTEST
 
 \BEGINTEST{simple pattern P}
-\SetTpeg\lTmpaTpeg{\TpegP{ab}}
-\MatchTpeg\lTmpaTpeg{cdef}
-\MatchTpeg\lTmpaTpeg{abcd}
-\MatchTpeg\lTmpaTpeg{ abcd}
-\MatchTpeg\lTmpaTpeg{a bcd}
+\SetSpeg\lTmpaSpeg{\SpegP{ab}}
+\MatchSpeg\lTmpaSpeg{cdef}
+\MatchSpeg\lTmpaSpeg{abcd}
+\MatchSpeg\lTmpaSpeg{ abcd}
+\MatchSpeg\lTmpaSpeg{a bcd}
 \ENDTEST
 
 \BEGINTEST{simple pattern Q}
-\SetTpeg\lTmpaTpeg{\TpegQ{1}}
-\MatchTpeg\lTmpaTpeg{}
-\MatchTpeg\lTmpaTpeg{ }
-\MatchTpeg\lTmpaTpeg{a}
+\SetSpeg\lTmpaSpeg{\SpegQ{1}}
+\MatchSpeg\lTmpaSpeg{}
+\MatchSpeg\lTmpaSpeg{ }
+\MatchSpeg\lTmpaSpeg{a}
 
 \ENDTEST
 
 \BEGINTEST{simple pattern Q}
-\SetTpeg\lTmpaTpeg{\TpegQ{3}}
-\MatchTpeg\lTmpaTpeg{a}
-\MatchTpeg\lTmpaTpeg{a }
-\MatchTpeg\lTmpaTpeg{a b}
-\MatchTpeg\lTmpaTpeg{a bc}
+\SetSpeg\lTmpaSpeg{\SpegQ{3}}
+\MatchSpeg\lTmpaSpeg{a}
+\MatchSpeg\lTmpaSpeg{a }
+\MatchSpeg\lTmpaSpeg{a b}
+\MatchSpeg\lTmpaSpeg{a bc}
 \ENDTEST
 
 \BEGINTEST{simple pattern R}
-\SetTpeg\lTmpaTpeg{\TpegR{AZ}}
-\MatchTpeg\lTmpaTpeg{12}
-\MatchTpeg\lTmpaTpeg{Aa}
-\MatchTpeg\lTmpaTpeg{Qq}
-\MatchTpeg\lTmpaTpeg{Zz}
-\MatchTpeg\lTmpaTpeg{aA}
+\SetSpeg\lTmpaSpeg{\SpegR{AZ}}
+\MatchSpeg\lTmpaSpeg{12}
+\MatchSpeg\lTmpaSpeg{Aa}
+\MatchSpeg\lTmpaSpeg{Qq}
+\MatchSpeg\lTmpaSpeg{Zz}
+\MatchSpeg\lTmpaSpeg{aA}
 \ENDTEST
 
 \BEGINTEST{simple pattern R}
-\SetTpeg\lTmpaTpeg{\TpegR{AZaz}}
-\MatchTpeg\lTmpaTpeg{12}
-\MatchTpeg\lTmpaTpeg{Qq}
-\MatchTpeg\lTmpaTpeg{[]}
-\MatchTpeg\lTmpaTpeg{qQ}
-\MatchTpeg\lTmpaTpeg{||}
+\SetSpeg\lTmpaSpeg{\SpegR{AZaz}}
+\MatchSpeg\lTmpaSpeg{12}
+\MatchSpeg\lTmpaSpeg{Qq}
+\MatchSpeg\lTmpaSpeg{[]}
+\MatchSpeg\lTmpaSpeg{qQ}
+\MatchSpeg\lTmpaSpeg{||}
 \ENDTEST
 
 \BEGINTEST{simple pattern S}
-\SetTpeg\lTmpaTpeg{\TpegS{13579}}
-\MatchTpeg\lTmpaTpeg{123}
-\MatchTpeg\lTmpaTpeg{456}
-\MatchTpeg\lTmpaTpeg{789}
-\MatchTpeg\lTmpaTpeg{abc}
-\MatchTpeg\lTmpaTpeg{|_|}
+\SetSpeg\lTmpaSpeg{\SpegS{13579}}
+\MatchSpeg\lTmpaSpeg{123}
+\MatchSpeg\lTmpaSpeg{456}
+\MatchSpeg\lTmpaSpeg{789}
+\MatchSpeg\lTmpaSpeg{abc}
+\MatchSpeg\lTmpaSpeg{|_|}
 \ENDTEST
 
 \end{document}

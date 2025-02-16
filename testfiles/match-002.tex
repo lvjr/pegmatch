@@ -1,76 +1,76 @@
 \documentclass{article}
 \input{regression-test}
-\SetTpegTracing{+match}
+\SetSpegTracing{+match}
 \begin{document}
 
 \START
 
 \BEGINTEST{choice operator}
-\SetTpeg\lTmpaTpeg{\TpegP{ab}/\TpegP{mn}/\TpegP{uv}}
-\MatchTpeg\lTmpaTpeg{cdef}
-\MatchTpeg\lTmpaTpeg{abcd}
-\MatchTpeg\lTmpaTpeg{uvwx}
+\SetSpeg\lTmpaSpeg{\SpegP{ab}/\SpegP{mn}/\SpegP{uv}}
+\MatchSpeg\lTmpaSpeg{cdef}
+\MatchSpeg\lTmpaSpeg{abcd}
+\MatchSpeg\lTmpaSpeg{uvwx}
 \ENDTEST
 
 \BEGINTEST{concat operator}
-\SetTpeg\lTmpaTpeg{\TpegP{ab}*\TpegP{mn}*\TpegP{uv}}
-\MatchTpeg\lTmpaTpeg{cdef}
-\MatchTpeg\lTmpaTpeg{abcd}
-\MatchTpeg\lTmpaTpeg{abmnxy}
-\MatchTpeg\lTmpaTpeg{abmnuv}
-\MatchTpeg\lTmpaTpeg{abmnuvxy}
+\SetSpeg\lTmpaSpeg{\SpegP{ab}*\SpegP{mn}*\SpegP{uv}}
+\MatchSpeg\lTmpaSpeg{cdef}
+\MatchSpeg\lTmpaSpeg{abcd}
+\MatchSpeg\lTmpaSpeg{abmnxy}
+\MatchSpeg\lTmpaSpeg{abmnuv}
+\MatchSpeg\lTmpaSpeg{abmnuvxy}
 \ENDTEST
 
 \BEGINTEST{not predicate operator}
-\SetTpeg\lTmpaTpeg{ ! \TpegP{ddd} }
-\MatchTpeg\lTmpaTpeg{dddd}
-\MatchTpeg\lTmpaTpeg{eeee}
+\SetSpeg\lTmpaSpeg{ ! \SpegP{ddd} }
+\MatchSpeg\lTmpaSpeg{dddd}
+\MatchSpeg\lTmpaSpeg{eeee}
 \ENDTEST
 
 \BEGINTEST{and predicate operator}
-\SetTpeg\lTmpaTpeg{ & \TpegP{eee} }
-\MatchTpeg\lTmpaTpeg{dddd}
-\MatchTpeg\lTmpaTpeg{eeee}
+\SetSpeg\lTmpaSpeg{ & \SpegP{eee} }
+\MatchSpeg\lTmpaSpeg{dddd}
+\MatchSpeg\lTmpaSpeg{eeee}
 \ENDTEST
 
 \BEGINTEST{repeat operator}
-\SetTpeg\lTmpaTpeg{ \TpegP{test} ^ 2 }
-\MatchTpeg\lTmpaTpeg{temp}
-\MatchTpeg\lTmpaTpeg{test}
-\MatchTpeg\lTmpaTpeg{testtemp}
-\MatchTpeg\lTmpaTpeg{testtest}
-\MatchTpeg\lTmpaTpeg{testtesttemp}
-\MatchTpeg\lTmpaTpeg{testtesttest}
-\MatchTpeg\lTmpaTpeg{testtesttesttemp}
+\SetSpeg\lTmpaSpeg{ \SpegP{test} ^ 2 }
+\MatchSpeg\lTmpaSpeg{temp}
+\MatchSpeg\lTmpaSpeg{test}
+\MatchSpeg\lTmpaSpeg{testtemp}
+\MatchSpeg\lTmpaSpeg{testtest}
+\MatchSpeg\lTmpaSpeg{testtesttemp}
+\MatchSpeg\lTmpaSpeg{testtesttest}
+\MatchSpeg\lTmpaSpeg{testtesttesttemp}
 \ENDTEST
 
 \BEGINTEST{repeat operator}
-\SetTpeg\lTmpaTpeg{ \TpegP{test} ^ 0 }
-\MatchTpeg\lTmpaTpeg{temp}
-\MatchTpeg\lTmpaTpeg{test}
-\MatchTpeg\lTmpaTpeg{testtemp}
-\MatchTpeg\lTmpaTpeg{testtest}
-\MatchTpeg\lTmpaTpeg{testtesttemp}
-\MatchTpeg\lTmpaTpeg{testtesttest}
-\MatchTpeg\lTmpaTpeg{testtesttesttemp}
+\SetSpeg\lTmpaSpeg{ \SpegP{test} ^ 0 }
+\MatchSpeg\lTmpaSpeg{temp}
+\MatchSpeg\lTmpaSpeg{test}
+\MatchSpeg\lTmpaSpeg{testtemp}
+\MatchSpeg\lTmpaSpeg{testtest}
+\MatchSpeg\lTmpaSpeg{testtesttemp}
+\MatchSpeg\lTmpaSpeg{testtesttest}
+\MatchSpeg\lTmpaSpeg{testtesttesttemp}
 \ENDTEST
 
 \BEGINTEST{repeat operator}
-\SetTpeg\lTmpaTpeg{ \TpegP{test} ^ {-1} }
-\MatchTpeg\lTmpaTpeg{temp}
-\MatchTpeg\lTmpaTpeg{test}
-\MatchTpeg\lTmpaTpeg{testtemp}
-\MatchTpeg\lTmpaTpeg{testtest}
+\SetSpeg\lTmpaSpeg{ \SpegP{test} ^ {-1} }
+\MatchSpeg\lTmpaSpeg{temp}
+\MatchSpeg\lTmpaSpeg{test}
+\MatchSpeg\lTmpaSpeg{testtemp}
+\MatchSpeg\lTmpaSpeg{testtest}
 \ENDTEST
 
 \BEGINTEST{repeat operator}
-\SetTpeg\lTmpaTpeg{ \TpegP{test} ^ {-2} }
-\MatchTpeg\lTmpaTpeg{temp}
-\MatchTpeg\lTmpaTpeg{test}
-\MatchTpeg\lTmpaTpeg{testtemp}
-\MatchTpeg\lTmpaTpeg{testtest}
-\MatchTpeg\lTmpaTpeg{testtesttemp}
-\MatchTpeg\lTmpaTpeg{testtesttest}
+\SetSpeg\lTmpaSpeg{ \SpegP{test} ^ {-2} }
+\MatchSpeg\lTmpaSpeg{temp}
+\MatchSpeg\lTmpaSpeg{test}
+\MatchSpeg\lTmpaSpeg{testtemp}
+\MatchSpeg\lTmpaSpeg{testtest}
+\MatchSpeg\lTmpaSpeg{testtesttemp}
+\MatchSpeg\lTmpaSpeg{testtesttest}
 \ENDTEST
 
 \end{document}

@@ -3,9 +3,9 @@ Don't change this file in any respect.
 ============================================================
 TEST 1: simple pattern
 ============================================================
-> Input= \TpegP {ab} .
-> Compiled tpeg variable \lTmpaTpeg:
-\TpegP 
+> Input= \SpegP {ab} .
+> Compiled speg variable \lTmpaSpeg:
+\SpegP 
 {
   ab
 }

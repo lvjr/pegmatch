@@ -1,7 +1,7 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
 ============================================================
-TEST 1: tpeg variables
+TEST 1: speg variables
 ============================================================
 StartMatch{foo bar}
   StartChoice{foo bar}

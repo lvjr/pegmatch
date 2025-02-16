@@ -1,16 +1,16 @@
 \documentclass{article}
 \input{regression-test}
-\SetTpegTracing{+set}
+\SetSpegTracing{+set}
 \begin{document}
 
 \START
 
-\NewTpeg\lMyWordTpeg
-\NewTpeg\lMyAnywhereTpeg
+\NewSpeg\lMyWordSpeg
+\NewSpeg\lMyAnywhereSpeg
 
-\BEGINTEST{tpeg variables}
-\SetTpeg\lMyWordTpeg{\TpegR{AZaz} ^ {3}}
-\SetTpeg\lMyAnywhereTpeg{\lMyWordTpeg / \TpegQ{1} * \lMyAnywhereTpeg}
+\BEGINTEST{speg variables}
+\SetSpeg\lMyWordSpeg{\SpegR{AZaz} ^ {3}}
+\SetSpeg\lMyAnywhereSpeg{\lMyWordSpeg / \SpegQ{1} * \lMyAnywhereSpeg}
 \ENDTEST
 
 \end{document}

@@ -3,21 +3,21 @@ Don't change this file in any respect.
 ============================================================
 TEST 1: pattern groups
 ============================================================
-> Input= {\TpegP {12} * \TpegP {34}} / \TpegP {ab} * \TpegP {cd} .
-> Compiled tpeg variable \lTmpaTpeg:
-\TpegChoice 
+> Input= {\SpegP {12} * \SpegP {34}} / \SpegP {ab} * \SpegP {cd} .
+> Compiled speg variable \lTmpaSpeg:
+\SpegChoice 
 {
   {
-    \TpegConcat 
+    \SpegConcat 
     {
       {
-        \TpegP 
+        \SpegP 
         {
           12
         }
       }
       {
-        \TpegP 
+        \SpegP 
         {
           34
         }
@@ -25,16 +25,16 @@ TEST 1: pattern groups
     }
   }
   {
-    \TpegConcat 
+    \SpegConcat 
     {
       {
-        \TpegP 
+        \SpegP 
         {
           ab
         }
       }
       {
-        \TpegP 
+        \SpegP 
         {
           cd
         }
@@ -46,23 +46,23 @@ TEST 1: pattern groups
 ============================================================
 TEST 2: pattern groups
 ============================================================
-> Input= !{\TpegP {12} * \TpegP {34}} / \TpegP {ab} * \TpegP {cd} .
-> Compiled tpeg variable \lTmpaTpeg:
-\TpegChoice 
+> Input= !{\SpegP {12} * \SpegP {34}} / \SpegP {ab} * \SpegP {cd} .
+> Compiled speg variable \lTmpaSpeg:
+\SpegChoice 
 {
   {
-    \TpegNot 
+    \SpegNot 
     {
-      \TpegConcat 
+      \SpegConcat 
       {
         {
-          \TpegP 
+          \SpegP 
           {
             12
           }
         }
         {
-          \TpegP 
+          \SpegP 
           {
             34
           }
@@ -71,16 +71,16 @@ TEST 2: pattern groups
     }
   }
   {
-    \TpegConcat 
+    \SpegConcat 
     {
       {
-        \TpegP 
+        \SpegP 
         {
           ab
         }
       }
       {
-        \TpegP 
+        \SpegP 
         {
           cd
         }
@@ -92,23 +92,23 @@ TEST 2: pattern groups
 ============================================================
 TEST 3: pattern groups
 ============================================================
-> Input= {\TpegP {12} / \TpegP {46}} ^ {4} / \TpegP {ab} * \TpegP {cd} .
-> Compiled tpeg variable \lMyaTpeg:
-\TpegChoice 
+> Input= {\SpegP {12} / \SpegP {46}} ^ {4} / \SpegP {ab} * \SpegP {cd} .
+> Compiled speg variable \lMyaSpeg:
+\SpegChoice 
 {
   {
-    \TpegRepeat 
+    \SpegRepeat 
     {
-      \TpegChoice 
+      \SpegChoice 
       {
         {
-          \TpegP 
+          \SpegP 
           {
             12
           }
         }
         {
-          \TpegP 
+          \SpegP 
           {
             46
           }
@@ -120,16 +120,16 @@ TEST 3: pattern groups
     }
   }
   {
-    \TpegConcat 
+    \SpegConcat 
     {
       {
-        \TpegP 
+        \SpegP 
         {
           ab
         }
       }
       {
-        \TpegP 
+        \SpegP 
         {
           cd
         }

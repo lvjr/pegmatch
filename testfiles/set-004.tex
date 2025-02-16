@@ -1,20 +1,20 @@
 \documentclass{article}
 \input{regression-test}
-\SetTpegTracing{+set}
+\SetSpegTracing{+set}
 \begin{document}
 
 \START
 
 \BEGINTEST{pattern groups}
-\SetTpeg\lTmpaTpeg{ {\TpegP{12} * \TpegP{34}} / \TpegP{ab} * \TpegP{cd} }
+\SetSpeg\lTmpaSpeg{ {\SpegP{12} * \SpegP{34}} / \SpegP{ab} * \SpegP{cd} }
 \ENDTEST
 
 \BEGINTEST{pattern groups}
-\SetTpeg\lTmpaTpeg{ !{\TpegP{12} * \TpegP{34}} / \TpegP{ab} * \TpegP{cd} }
+\SetSpeg\lTmpaSpeg{ !{\SpegP{12} * \SpegP{34}} / \SpegP{ab} * \SpegP{cd} }
 \ENDTEST
 
 \BEGINTEST{pattern groups}
-\SetTpeg\lMyaTpeg{ {\TpegP{12} / \TpegP{46}} ^ {4} / \TpegP{ab} * \TpegP{cd} }
+\SetSpeg\lMyaSpeg{ {\SpegP{12} / \SpegP{46}} ^ {4} / \SpegP{ab} * \SpegP{cd} }
 \ENDTEST
 
 \end{document}

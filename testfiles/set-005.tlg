@@ -1,13 +1,13 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
 ============================================================
-TEST 1: tpeg variables
+TEST 1: speg variables
 ============================================================
-> Input=\TpegR {AZaz} ^ {3}.
-> Compiled tpeg variable \lMyWordTpeg:
-\TpegRepeat 
+> Input=\SpegR {AZaz} ^ {3}.
+> Compiled speg variable \lMyWordSpeg:
+\SpegRepeat 
 {
-  \TpegR 
+  \SpegR 
   {
     AZaz
   }
@@ -15,24 +15,24 @@ TEST 1: tpeg variables
 {
   3
 }
-> Input=\lMyWordTpeg / \TpegQ {1} * \lMyAnywhereTpeg .
-> Compiled tpeg variable \lMyAnywhereTpeg:
-\TpegChoice 
+> Input=\lMyWordSpeg / \SpegQ {1} * \lMyAnywhereSpeg .
+> Compiled speg variable \lMyAnywhereSpeg:
+\SpegChoice 
 {
   {
-    \lMyWordTpeg 
+    \lMyWordSpeg 
   }
   {
-    \TpegConcat 
+    \SpegConcat 
     {
       {
-        \TpegQ 
+        \SpegQ 
         {
           1
         }
       }
       {
-        \lMyAnywhereTpeg 
+        \lMyAnywhereSpeg 
       }
     }
   }

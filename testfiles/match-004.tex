@@ -1,20 +1,20 @@
 \documentclass{article}
 \input{regression-test}
-\SetTpegTracing{+match}
+\SetSpegTracing{+match}
 \begin{document}
 
 \START
 
 \BEGINTEST{pattern groups}
-\SetTpeg\lTmpaTpeg{ { \TpegR{09} / \TpegS{(+-)} } ^ {3} * { \TpegR{AZ} / \TpegR{az} } ^ {-2} }
-\MatchTpeg\lTmpaTpeg{}
-\MatchTpeg\lTmpaTpeg{1+9}
-\MatchTpeg\lTmpaTpeg{159}
-\MatchTpeg\lTmpaTpeg{(+-+)}
-\MatchTpeg\lTmpaTpeg{15x}
-\MatchTpeg\lTmpaTpeg{159A}
-\MatchTpeg\lTmpaTpeg{159xy}
-\MatchTpeg\lTmpaTpeg{159abc}
+\SetSpeg\lTmpaSpeg{ { \SpegR{09} / \SpegS{(+-)} } ^ {3} * { \SpegR{AZ} / \SpegR{az} } ^ {-2} }
+\MatchSpeg\lTmpaSpeg{}
+\MatchSpeg\lTmpaSpeg{1+9}
+\MatchSpeg\lTmpaSpeg{159}
+\MatchSpeg\lTmpaSpeg{(+-+)}
+\MatchSpeg\lTmpaSpeg{15x}
+\MatchSpeg\lTmpaSpeg{159A}
+\MatchSpeg\lTmpaSpeg{159xy}
+\MatchSpeg\lTmpaSpeg{159abc}
 \ENDTEST
 
 \end{document}

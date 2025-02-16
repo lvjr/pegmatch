@@ -3,17 +3,17 @@ Don't change this file in any respect.
 ============================================================
 TEST 1: simple capture
 ============================================================
-> Input=\TpegCp * \TpegR {az} ^ {1} * \TpegCp * \TpegR {09} ^ {1} * \TpegCp .
-> Compiled tpeg variable \lTmpaTpeg:
-\TpegConcat 
+> Input=\SpegCp * \SpegR {az} ^ {1} * \SpegCp * \SpegR {09} ^ {1} * \SpegCp .
+> Compiled speg variable \lTmpaSpeg:
+\SpegConcat 
 {
   {
-    \TpegCp 
+    \SpegCp 
   }
   {
-    \TpegRepeat 
+    \SpegRepeat 
     {
-      \TpegR 
+      \SpegR 
       {
         az
       }
@@ -23,12 +23,12 @@ TEST 1: simple capture
     }
   }
   {
-    \TpegCp 
+    \SpegCp 
   }
   {
-    \TpegRepeat 
+    \SpegRepeat 
     {
-      \TpegR 
+      \SpegR 
       {
         09
       }
@@ -38,23 +38,23 @@ TEST 1: simple capture
     }
   }
   {
-    \TpegCp 
+    \SpegCp 
   }
 }
 ============================================================
 ============================================================
 TEST 2: position capture
 ============================================================
-> Input=\TpegC {\TpegR {az}^{1}} * \TpegC {\TpegR {09}^{1}}.
-> Compiled tpeg variable \lTmpaTpeg:
-\TpegConcat 
+> Input=\SpegC {\SpegR {az}^{1}} * \SpegC {\SpegR {09}^{1}}.
+> Compiled speg variable \lTmpaSpeg:
+\SpegConcat 
 {
   {
-    \TpegC 
+    \SpegC 
     {
-      \TpegRepeat 
+      \SpegRepeat 
       {
-        \TpegR 
+        \SpegR 
         {
           az
         }
@@ -65,11 +65,11 @@ TEST 2: position capture
     }
   }
   {
-    \TpegC 
+    \SpegC 
     {
-      \TpegRepeat 
+      \SpegRepeat 
       {
-        \TpegR 
+        \SpegR 
         {
           09
         }

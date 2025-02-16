@@ -1,63 +1,63 @@
 \documentclass{article}
 \input{regression-test}
-\SetTpegTracing{+match}
+\SetSpegTracing{+match}
 \begin{document}
 
 \START
 
 \BEGINTEST{multiple operators}
-\SetTpeg\lTmpaTpeg{ !\TpegP{cd} * \TpegQ{1} }
-\MatchTpeg\lTmpaTpeg{}
-\MatchTpeg\lTmpaTpeg{c}
-\MatchTpeg\lTmpaTpeg{cde}
-\MatchTpeg\lTmpaTpeg{abc}
+\SetSpeg\lTmpaSpeg{ !\SpegP{cd} * \SpegQ{1} }
+\MatchSpeg\lTmpaSpeg{}
+\MatchSpeg\lTmpaSpeg{c}
+\MatchSpeg\lTmpaSpeg{cde}
+\MatchSpeg\lTmpaSpeg{abc}
 \ENDTEST
 
 \BEGINTEST{multiple operators}
-\SetTpeg\lTmpaTpeg{ ! \TpegR{an} * \TpegQ{1} }
-\MatchTpeg\lTmpaTpeg{}
-\MatchTpeg\lTmpaTpeg{cc}
-\MatchTpeg\lTmpaTpeg{nn}
-\MatchTpeg\lTmpaTpeg{zz}
+\SetSpeg\lTmpaSpeg{ ! \SpegR{an} * \SpegQ{1} }
+\MatchSpeg\lTmpaSpeg{}
+\MatchSpeg\lTmpaSpeg{cc}
+\MatchSpeg\lTmpaSpeg{nn}
+\MatchSpeg\lTmpaSpeg{zz}
 \ENDTEST
 
 \BEGINTEST{multiple operators}
-\SetTpeg\lTmpaTpeg{ ! \TpegR{AZaz} * \TpegQ{1} }
-\MatchTpeg\lTmpaTpeg{}
-\MatchTpeg\lTmpaTpeg{[]}
-\MatchTpeg\lTmpaTpeg{X2}
-\MatchTpeg\lTmpaTpeg{12}
-\MatchTpeg\lTmpaTpeg{x2}
-\MatchTpeg\lTmpaTpeg{12}
+\SetSpeg\lTmpaSpeg{ ! \SpegR{AZaz} * \SpegQ{1} }
+\MatchSpeg\lTmpaSpeg{}
+\MatchSpeg\lTmpaSpeg{[]}
+\MatchSpeg\lTmpaSpeg{X2}
+\MatchSpeg\lTmpaSpeg{12}
+\MatchSpeg\lTmpaSpeg{x2}
+\MatchSpeg\lTmpaSpeg{12}
 \ENDTEST
 
 \BEGINTEST{multiple operators}
-\SetTpeg\lTmpaTpeg{ ! \TpegS{asc} * \TpegQ{1} }
-\MatchTpeg\lTmpaTpeg{}
-\MatchTpeg\lTmpaTpeg{aa}
-\MatchTpeg\lTmpaTpeg{bb}
-\MatchTpeg\lTmpaTpeg{cc}
+\SetSpeg\lTmpaSpeg{ ! \SpegS{asc} * \SpegQ{1} }
+\MatchSpeg\lTmpaSpeg{}
+\MatchSpeg\lTmpaSpeg{aa}
+\MatchSpeg\lTmpaSpeg{bb}
+\MatchSpeg\lTmpaSpeg{cc}
 \ENDTEST
 
 \BEGINTEST{multiple operators with errors}
-\SetTpeg\lTmpaTpeg{ \TpegP{ab} * \TpegQ{1} * \TpegP{de} / \TpegP{12} * \TpegQ{2} * \TpegP{56} }
-\MatchTpeg\lTmpaTpeg{}
-\MatchTpeg\lTmpaTpeg{*****}
-\MatchTpeg\lTmpaTpeg{abxyz}
-\MatchTpeg\lTmpaTpeg{ab0de}
-\MatchTpeg\lTmpaTpeg{12xyz}
-\MatchTpeg\lTmpaTpeg{12xy56}
+\SetSpeg\lTmpaSpeg{ \SpegP{ab} * \SpegQ{1} * \SpegP{de} / \SpegP{12} * \SpegQ{2} * \SpegP{56} }
+\MatchSpeg\lTmpaSpeg{}
+\MatchSpeg\lTmpaSpeg{*****}
+\MatchSpeg\lTmpaSpeg{abxyz}
+\MatchSpeg\lTmpaSpeg{ab0de}
+\MatchSpeg\lTmpaSpeg{12xyz}
+\MatchSpeg\lTmpaSpeg{12xy56}
 \ENDTEST
 
 \BEGINTEST{multiple operators with errors}
-\SetTpeg\lTmpaTpeg{ \TpegR{AZ} ^ {4} / \TpegR{09} ^ 3 * \TpegS{abcd} }
-\MatchTpeg\lTmpaTpeg{}
-\MatchTpeg\lTmpaTpeg{ABC}
-\MatchTpeg\lTmpaTpeg{ABCd}
-\MatchTpeg\lTmpaTpeg{ABCD}
-\MatchTpeg\lTmpaTpeg{12x}
-\MatchTpeg\lTmpaTpeg{159x}
-\MatchTpeg\lTmpaTpeg{159c}
+\SetSpeg\lTmpaSpeg{ \SpegR{AZ} ^ {4} / \SpegR{09} ^ 3 * \SpegS{abcd} }
+\MatchSpeg\lTmpaSpeg{}
+\MatchSpeg\lTmpaSpeg{ABC}
+\MatchSpeg\lTmpaSpeg{ABCd}
+\MatchSpeg\lTmpaSpeg{ABCD}
+\MatchSpeg\lTmpaSpeg{12x}
+\MatchSpeg\lTmpaSpeg{159x}
+\MatchSpeg\lTmpaSpeg{159c}
 \ENDTEST
 
 \end{document}

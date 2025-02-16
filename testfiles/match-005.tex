@@ -1,20 +1,20 @@
 \documentclass{article}
 \input{regression-test}
-\SetTpegTracing{+match}
+\SetSpegTracing{+match}
 \begin{document}
 
 \START
 
-\NewTpeg\lMyWordTpeg
-\NewTpeg\lMyAnywhereTpeg
+\NewSpeg\lMyWordSpeg
+\NewSpeg\lMyAnywhereSpeg
 
-\BEGINTEST{tpeg variables}
-\SetTpeg\lMyWordTpeg{\TpegR{AZaz} ^ {3}}
-\SetTpeg\lMyAnywhereTpeg{\lMyWordTpeg / \TpegQ{1} * \lMyAnywhereTpeg}
-\IfTpegMatchTF\lMyAnywhereTpeg{foo bar}{\typeout{[T]}}{\typeout{[F]}}
-\IfTpegMatchTF\lMyAnywhereTpeg{fo bar}{\typeout{[T]}}{\typeout{[F]}}
-\IfTpegMatchTF\lMyAnywhereTpeg{123 ba}{\typeout{[T]}}{\typeout{[F]}}
-\IfTpegMatchTF\lMyAnywhereTpeg{123 bar}{\typeout{[T]}}{\typeout{[F]}}
+\BEGINTEST{speg variables}
+\SetSpeg\lMyWordSpeg{\SpegR{AZaz} ^ {3}}
+\SetSpeg\lMyAnywhereSpeg{\lMyWordSpeg / \SpegQ{1} * \lMyAnywhereSpeg}
+\IfSpegMatchTF\lMyAnywhereSpeg{foo bar}{\typeout{[T]}}{\typeout{[F]}}
+\IfSpegMatchTF\lMyAnywhereSpeg{fo bar}{\typeout{[T]}}{\typeout{[F]}}
+\IfSpegMatchTF\lMyAnywhereSpeg{123 ba}{\typeout{[T]}}{\typeout{[F]}}
+\IfSpegMatchTF\lMyAnywhereSpeg{123 bar}{\typeout{[T]}}{\typeout{[F]}}
 \ENDTEST
 
 \end{document}

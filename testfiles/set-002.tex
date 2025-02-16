@@ -1,28 +1,28 @@
 \documentclass{article}
 \input{regression-test}
-\SetTpegTracing{+set}
+\SetSpegTracing{+set}
 \begin{document}
 
 \START
 
 \BEGINTEST{choice operator}
-\SetTpeg\lTmpaTpeg{ \TpegP{ab} / \TpegP{cd} / \TpegP{de} }
+\SetSpeg\lTmpaSpeg{ \SpegP{ab} / \SpegP{cd} / \SpegP{de} }
 \ENDTEST
 
 \BEGINTEST{concat operator}
-\SetTpeg\lTmpaTpeg{ \TpegP{aa} * \TpegP{bb} * \TpegP{cc} }
+\SetSpeg\lTmpaSpeg{ \SpegP{aa} * \SpegP{bb} * \SpegP{cc} }
 \ENDTEST
 
 \BEGINTEST{not predicate operator}
-\SetTpeg\lTmpaTpeg{ ! \TpegP{ddd} }
+\SetSpeg\lTmpaSpeg{ ! \SpegP{ddd} }
 \ENDTEST
 
 \BEGINTEST{and predicate operator}
-\SetTpeg\lTmpaTpeg{ & \TpegP{eee} }
+\SetSpeg\lTmpaSpeg{ & \SpegP{eee} }
 \ENDTEST
 
 \BEGINTEST{repeat operator}
-\SetTpeg\lTmpaTpeg{ \TpegP{test} ^ 4 }
+\SetSpeg\lTmpaSpeg{ \SpegP{test} ^ 4 }
 \ENDTEST
 
 \end{document}

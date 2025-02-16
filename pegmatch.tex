@@ -42,7 +42,7 @@
 \begin{document}
 
 \title{\textsf{\color{green3}PEGMATCH: Parsing Expression Grammars for TeX}}
-\author{Jianrui Lyu (tolvjr@163.com)\\ \url{https://github.com/lvjr/tpeg}}
+\author{Jianrui Lyu (tolvjr@163.com)\\ \url{https://github.com/lvjr/speg}}
 \date{\mydate}
 \maketitle
 
@@ -67,41 +67,41 @@ Also it is still in experimental status, hence some interfaces may change in fut
 
 The following is the first example:
 \begin{demohigh}
-\NewTpeg\lMyTestTpeg
-\SetTpeg\lMyTestTpeg{\TpegP{abc}}
-\IfTpegMatchTF\lMyTestTpeg{a}{T}{F}
-\IfTpegMatchTF\lMyTestTpeg{ab}{T}{F}
-\IfTpegMatchTF\lMyTestTpeg{abc}{T}{F}
-\IfTpegMatchTF\lMyTestTpeg{abcd}{T}{F}
+\NewSpeg\lMyTestSpeg
+\SetSpeg\lMyTestSpeg{\SpegP{abc}}
+\IfSpegMatchTF\lMyTestSpeg{a}{T}{F}
+\IfSpegMatchTF\lMyTestSpeg{ab}{T}{F}
+\IfSpegMatchTF\lMyTestSpeg{abc}{T}{F}
+\IfSpegMatchTF\lMyTestSpeg{abcd}{T}{F}
 \end{demohigh}
-In this example, we use \CC{\NewTpeg} to create a new \VT{tpeg} variable \VV{\lMyTestTpeg},
-and use \CC{\SetTpeg} to set the variable with a pattern expression,
-then use \CC{\IfTpegMatchTF} to match it against different subject strings.
-The pattern \TT{\TpegP{abc}} matches the string \TT{abc} literally.
+In this example, we use \CC{\NewSpeg} to create a new \VT{speg} variable \VV{\lMyTestSpeg},
+and use \CC{\SetSpeg} to set the variable with a pattern expression,
+then use \CC{\IfSpegMatchTF} to match it against different subject strings.
+The pattern \TT{\SpegP{abc}} matches the string \TT{abc} literally.
 
 \section{Basic commands}
 
-This package provides the following commands for creating and matching \VT{tpeg} patterns:\nopagebreak
+This package provides the following commands for creating and matching \VT{speg} patterns:\nopagebreak
 \begin{spectblr}[
   caption = Basic commands
 ]{}
   Command & Description \\
-  \CC{\NewTpeg#1}     & create \VT{tpeg} variable \TT{#1}\\
-  \CC{\SetTpeg#1{#2}} & set \VT{tpeg} variable \TT{#1} with \VT{tpeg} expresssion \VT{#2}\\
-  \CC{\IfTpegMatchT#1{#2}{#3}}
+  \CC{\NewSpeg#1}     & create \VT{speg} variable \TT{#1}\\
+  \CC{\SetSpeg#1{#2}} & set \VT{speg} variable \TT{#1} with \VT{speg} expresssion \VT{#2}\\
+  \CC{\IfSpegMatchT#1{#2}{#3}}
       & match \TT{#1} against string \TT{#2}, then run code \TT{#3} if the match succeeds\\
-  \CC{\IfTpegMatchF#1{#2}{#3}}
+  \CC{\IfSpegMatchF#1{#2}{#3}}
       & match \TT{#1} against string \TT{#2}, then run code \TT{#3} if the match fails\\
-  \CC{\IfTpegMatchTF#1{#2}{#3}{#4}}
+  \CC{\IfSpegMatchTF#1{#2}{#3}{#4}}
       & match \TT{#1} against string \TT{#2}, then run code \TT{#3} if the match succeeds,
         othewise run code \TT{#4}\\
-  \CC{\IfTpegExtractT#1{#2}#3{#4}}
+  \CC{\IfSpegExtractT#1{#2}#3{#4}}
       & match \TT{#1} against string \TT{#2},
         then store captures in \TT{#3} and run code \TT{#4} if the match succeeds\\
-  \CC{\IfTpegExtractF#1{#2}#3{#4}}
+  \CC{\IfSpegExtractF#1{#2}#3{#4}}
       & match \TT{#1} against string \TT{#2},
         then clear \TT{#3} and run code \TT{#4} if the match fails\\
-  \CC{\IfTpegExtractTF#1{#2}#3{#4}{#5}}
+  \CC{\IfSpegExtractTF#1{#2}#3{#4}{#5}}
       & match \TT{#1} against string \TT{#2},
         then store captures in \TT{#3} and run code \TT{#4} if the match succeeds,
         othewise clear \TT{#3} and run code \TT{#5}
@@ -109,10 +109,10 @@ This package provides the following commands for creating and matching \VT{tpeg}
 
 \section{Scratch variables}
 
-There are two predefined scratch \VT{tpeg} variables for setting \VT{tpeg} patterns:
-\VV{\lTmpaTpeg} and \VV{\lTmpbTpeg}.
+There are two predefined scratch \VT{speg} variables for setting \VT{speg} patterns:
+\VV{\lTmpaSpeg} and \VV{\lTmpbSpeg}.
 Also there are two predefined scratch \VT{seq} variables for storing captures
-(see Section~\ref{sect:capture}): \VV{\lTpegTmpaSeq} and \VV{\lTpegTmpbSeq}.%
+(see Section~\ref{sect:capture}): \VV{\lSpegTmpaSeq} and \VV{\lSpegTmpbSeq}.%
 
 \section{Primitive patterns}
 
@@ -121,39 +121,39 @@ This package provides the following commands for making primitive patterns:%\nop
   caption = Primitive patterns
 ]{}
   Pattern & Description \\
-  \TT{\TpegP{<string>}} & match \TT{<string>} literally \\
-  \TT{\TpegQ{<n>}}      & match exactly \TT{<n>} characters \\
-  \TT{\TpegR{<X><Y><x><y>}}
+  \TT{\SpegP{<string>}} & match \TT{<string>} literally \\
+  \TT{\SpegQ{<n>}}      & match exactly \TT{<n>} characters \\
+  \TT{\SpegR{<X><Y><x><y>}}
      & match any character between \TT{<X>} and \TT{<Y>} or between \TT{<x>} and \TT{<y>} \\
-  \TT{\TpegS{<string>}} & match any character in \TT{<string>}
+  \TT{\SpegS{<string>}} & match any character in \TT{<string>}
 \end{spectblr}
 
 The following examples demonstrate pattern matching with other primitive patterns:
 \begin{demohigh}
-\SetTpeg\lMyTestTpeg{\TpegQ{2}}
-\IfTpegMatchTF\lMyTestTpeg{u}{T}{F}
-\IfTpegMatchTF\lMyTestTpeg{vw}{T}{F}
-\IfTpegMatchTF\lMyTestTpeg{xyz}{T}{F}
+\SetSpeg\lMyTestSpeg{\SpegQ{2}}
+\IfSpegMatchTF\lMyTestSpeg{u}{T}{F}
+\IfSpegMatchTF\lMyTestSpeg{vw}{T}{F}
+\IfSpegMatchTF\lMyTestSpeg{xyz}{T}{F}
 \end{demohigh}
 \begin{demohigh}
-\SetTpeg\lMyTestTpeg{\TpegR{AZ}}
-\IfTpegMatchTF\lMyTestTpeg{Qq}{T}{F}
-\IfTpegMatchTF\lMyTestTpeg{q1}{T}{F}
-\IfTpegMatchTF\lMyTestTpeg{1Q}{T}{F}
-\SetTpeg\lMyTestTpeg{\TpegR{AZaz}}
-\IfTpegMatchTF\lMyTestTpeg{Qq}{T}{F}
-\IfTpegMatchTF\lMyTestTpeg{q1}{T}{F}
-\IfTpegMatchTF\lMyTestTpeg{1Q}{T}{F}
+\SetSpeg\lMyTestSpeg{\SpegR{AZ}}
+\IfSpegMatchTF\lMyTestSpeg{Qq}{T}{F}
+\IfSpegMatchTF\lMyTestSpeg{q1}{T}{F}
+\IfSpegMatchTF\lMyTestSpeg{1Q}{T}{F}
+\SetSpeg\lMyTestSpeg{\SpegR{AZaz}}
+\IfSpegMatchTF\lMyTestSpeg{Qq}{T}{F}
+\IfSpegMatchTF\lMyTestSpeg{q1}{T}{F}
+\IfSpegMatchTF\lMyTestSpeg{1Q}{T}{F}
 \end{demohigh}
 
 \begin{demohigh}
-\SetTpeg\lMyTestTpeg{\TpegS{world}}
-\IfTpegMatchTF\lMyTestTpeg{one}{T}{F}
-\IfTpegMatchTF\lMyTestTpeg{two}{T}{F}
+\SetSpeg\lMyTestSpeg{\SpegS{world}}
+\IfSpegMatchTF\lMyTestSpeg{one}{T}{F}
+\IfSpegMatchTF\lMyTestSpeg{two}{T}{F}
 \end{demohigh}
 
 By default, PEG always starts at the first character.
-Since both \CC{\TpegR} and \CC{\TpegS} match only one letter,
+Since both \CC{\SpegR} and \CC{\SpegS} match only one letter,
 both last commands in previous two examples give \TT{F}.
 
 \section{Pattern operators}
@@ -174,21 +174,21 @@ This package provides the following pattern operators for composing patterns:
 
 With \TT{!} and \TT{*} operators, we can create negative character sets:
 \begin{demohigh}
-\SetTpeg\lMyTestTpeg{!\TpegR{09} * \TpegQ{1}}
-\IfTpegMatchTF\lMyTestTpeg{A}{T}{F}
-\IfTpegMatchTF\lMyTestTpeg{5}{T}{F}
-\SetTpeg\lMyTestTpeg{!\TpegS{abc} * \TpegQ{1}}
-\IfTpegMatchTF\lMyTestTpeg{B}{T}{F}
-\IfTpegMatchTF\lMyTestTpeg{b}{T}{F}
+\SetSpeg\lMyTestSpeg{!\SpegR{09} * \SpegQ{1}}
+\IfSpegMatchTF\lMyTestSpeg{A}{T}{F}
+\IfSpegMatchTF\lMyTestSpeg{5}{T}{F}
+\SetSpeg\lMyTestSpeg{!\SpegS{abc} * \SpegQ{1}}
+\IfSpegMatchTF\lMyTestSpeg{B}{T}{F}
+\IfSpegMatchTF\lMyTestSpeg{b}{T}{F}
 \end{demohigh}
 
 With \TT{^} operator, we can match words:
 \begin{demohigh}
-\SetTpeg\lMyTestTpeg{\TpegR{AZaz} ^ {1}}
-\IfTpegMatchTF\lMyTestTpeg{HELLO}{T}{F}
-\IfTpegMatchTF\lMyTestTpeg{world}{T}{F}
-\IfTpegMatchTF\lMyTestTpeg{ text }{T}{F}
-\IfTpegMatchTF\lMyTestTpeg{(text)}{T}{F}
+\SetSpeg\lMyTestSpeg{\SpegR{AZaz} ^ {1}}
+\IfSpegMatchTF\lMyTestSpeg{HELLO}{T}{F}
+\IfSpegMatchTF\lMyTestSpeg{world}{T}{F}
+\IfSpegMatchTF\lMyTestSpeg{ text }{T}{F}
+\IfSpegMatchTF\lMyTestSpeg{(text)}{T}{F}
 \end{demohigh}
 
 In fact, \TT{patt^{-1}} is similar to \TT{expr?}, \TT{patt^0} is similar to \TT{expr*},
@@ -196,32 +196,32 @@ and \TT{patt^1} is similar to \TT{expr+} in regular expression matching.
 
 \section{Pattern variables}
 
-In using \CC{\SetTpeg} command to set a \VT{tpeg} variable with a pattern expression,
-you can use other \VT{tpeg} variables. For example:
+In using \CC{\SetSpeg} command to set a \VT{speg} variable with a pattern expression,
+you can use other \VT{speg} variables. For example:
 \begin{demohigh}
-\SetTpeg\lTmpaTpeg{\TpegR{AZ} / \TpegR{az}}
-\SetTpeg\lTmpbTpeg{\TpegS{135} * \lTmpaTpeg}
-\IfTpegMatchTF\lTmpbTpeg{2ab}{[T]}{[F]}
-\IfTpegMatchTF\lTmpbTpeg{3ab}{[T]}{[F]}
-\SetTpeg\lTmpbTpeg{\TpegS{135} * \lTmpaTpeg^{3}}
-\IfTpegMatchTF\lTmpbTpeg{3ab}{[T]}{[F]}
-\IfTpegMatchTF\lTmpbTpeg{3abcd}{[T]}{[F]}
+\SetSpeg\lTmpaSpeg{\SpegR{AZ} / \SpegR{az}}
+\SetSpeg\lTmpbSpeg{\SpegS{135} * \lTmpaSpeg}
+\IfSpegMatchTF\lTmpbSpeg{2ab}{[T]}{[F]}
+\IfSpegMatchTF\lTmpbSpeg{3ab}{[T]}{[F]}
+\SetSpeg\lTmpbSpeg{\SpegS{135} * \lTmpaSpeg^{3}}
+\IfSpegMatchTF\lTmpbSpeg{3ab}{[T]}{[F]}
+\IfSpegMatchTF\lTmpbSpeg{3abcd}{[T]}{[F]}
 \end{demohigh}
 
-By using another recursive pattern, we can make \PP{tpeg} find a pattern anywhere in a string.
+By using another recursive pattern, we can make \PP{speg} find a pattern anywhere in a string.
 The following example demonstrates how to match a word with at least three letters
 inside a string:\nopagebreak
 \begin{demohigh}
-\NewTpeg\lMyWordTpeg
-\NewTpeg\lMyAnywhereTpeg
-\SetTpeg\lMyWordTpeg{\TpegR{AZaz}^{3}}
-\SetTpeg\lMyAnywhereTpeg{\lMyWordTpeg / \TpegQ{1} * \lMyAnywhereTpeg}
-\IfTpegMatchTF\lMyAnywhereTpeg{foo bar}{[T]}{[F]}
-\IfTpegMatchTF\lMyAnywhereTpeg{fo bar}{[T]}{[F]}
-\IfTpegMatchTF\lMyAnywhereTpeg{123 ba}{[T]}{[F]}
-\IfTpegMatchTF\lMyAnywhereTpeg{123 bar}{[T]}{[F]}
+\NewSpeg\lMyWordSpeg
+\NewSpeg\lMyAnywhereSpeg
+\SetSpeg\lMyWordSpeg{\SpegR{AZaz}^{3}}
+\SetSpeg\lMyAnywhereSpeg{\lMyWordSpeg / \SpegQ{1} * \lMyAnywhereSpeg}
+\IfSpegMatchTF\lMyAnywhereSpeg{foo bar}{[T]}{[F]}
+\IfSpegMatchTF\lMyAnywhereSpeg{fo bar}{[T]}{[F]}
+\IfSpegMatchTF\lMyAnywhereSpeg{123 ba}{[T]}{[F]}
+\IfSpegMatchTF\lMyAnywhereSpeg{123 bar}{[T]}{[F]}
 \end{demohigh}
-In this example, \VV{\lMyAnywhereTpeg} tries to match \VV{\lMyWordTpeg},
+In this example, \VV{\lMyAnywhereSpeg} tries to match \VV{\lMyWordSpeg},
 skipping one letter and tries again if it fails.
 
 \section{Capture patterns}%
@@ -232,38 +232,38 @@ This package provides the following commands for making capture patterns:
   caption = Primitive patterns
 ]{}
   Pattern             & Name & Description \\
-  \CC{\TpegC{<patt>}} & simple capture & capture the match for \TT{<patt>}\\
-  \CC{\TpegCp}        & position capture & capture current position
+  \CC{\SpegC{<patt>}} & simple capture & capture the match for \TT{<patt>}\\
+  \CC{\SpegCp}        & position capture & capture current position
 \end{spectblr}
 
-Position capture \CC{\TpegCp} must be concatenated with other patterns (by using \TT{*} operator):
+Position capture \CC{\SpegCp} must be concatenated with other patterns (by using \TT{*} operator):
 \begin{demohigh}
-\SetTpeg\lTmpaTpeg{\TpegCp * \TpegR{az}^{1} * \TpegCp * \TpegR{09}^{1} * \TpegCp}
-\IfTpegExtractTF\lTmpaTpeg{12ab}\lTpegTmpaSeq{%
-  \MapTpegSeqInline\lTpegTmpaSeq{[#1]}%
+\SetSpeg\lTmpaSpeg{\SpegCp * \SpegR{az}^{1} * \SpegCp * \SpegR{09}^{1} * \SpegCp}
+\IfSpegExtractTF\lTmpaSpeg{12ab}\lSpegTmpaSeq{%
+  \MapSpegSeqInline\lSpegTmpaSeq{[#1]}%
 }{Failed}
-\IfTpegExtractTF\lTmpaTpeg{ab12}\lTpegTmpaSeq{%
-  \MapTpegSeqInline\lTpegTmpaSeq{[#1]}%
+\IfSpegExtractTF\lTmpaSpeg{ab12}\lSpegTmpaSeq{%
+  \MapSpegSeqInline\lSpegTmpaSeq{[#1]}%
 }{Failed}
-\IfTpegExtractTF\lTmpaTpeg{abcd12345}\lTpegTmpaSeq{%
-  \MapTpegSeqInline\lTpegTmpaSeq{[#1]}%
+\IfSpegExtractTF\lTmpaSpeg{abcd12345}\lSpegTmpaSeq{%
+  \MapSpegSeqInline\lSpegTmpaSeq{[#1]}%
 }{Failed}
 \end{demohigh}
-In this example, we use \CC{\IfTpegExtractTF} command to extract all captures,
-which are stored in the \VT{seq} variable (\CC{\lTpegTmpaSeq}) specified by the third argument.
-Then we use \CC{\MapTpegSeqInline} command to print each capture.
+In this example, we use \CC{\IfSpegExtractTF} command to extract all captures,
+which are stored in the \VT{seq} variable (\CC{\lSpegTmpaSeq}) specified by the third argument.
+Then we use \CC{\MapSpegSeqInline} command to print each capture.
 
 If you want to capture the substrings, you can modified the above example as follows:\nopagebreak
 \begin{demohigh}
-\SetTpeg\lTmpaTpeg{\TpegC{\TpegR{az}^{1}} * \TpegC{\TpegR{09}^{1}}}
-\IfTpegExtractTF\lTmpaTpeg{12ab}\lTpegTmpaSeq{%
-  \MapTpegSeqInline\lTpegTmpaSeq{[#1]}%
+\SetSpeg\lTmpaSpeg{\SpegC{\SpegR{az}^{1}} * \SpegC{\SpegR{09}^{1}}}
+\IfSpegExtractTF\lTmpaSpeg{12ab}\lSpegTmpaSeq{%
+  \MapSpegSeqInline\lSpegTmpaSeq{[#1]}%
 }{Failed}
-\IfTpegExtractTF\lTmpaTpeg{ab12}\lTpegTmpaSeq{%
-  \MapTpegSeqInline\lTpegTmpaSeq{[#1]}%
+\IfSpegExtractTF\lTmpaSpeg{ab12}\lSpegTmpaSeq{%
+  \MapSpegSeqInline\lSpegTmpaSeq{[#1]}%
 }{Failed}
-\IfTpegExtractTF\lTmpaTpeg{abcd12345}\lTpegTmpaSeq{%
-  \MapTpegSeqInline\lTpegTmpaSeq{[#1]}%
+\IfSpegExtractTF\lTmpaSpeg{abcd12345}\lSpegTmpaSeq{%
+  \MapSpegSeqInline\lSpegTmpaSeq{[#1]}%
 }{Failed}
 \end{demohigh}
 

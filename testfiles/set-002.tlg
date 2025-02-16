@@ -3,24 +3,24 @@ Don't change this file in any respect.
 ============================================================
 TEST 1: choice operator
 ============================================================
-> Input= \TpegP {ab} / \TpegP {cd} / \TpegP {de} .
-> Compiled tpeg variable \lTmpaTpeg:
-\TpegChoice 
+> Input= \SpegP {ab} / \SpegP {cd} / \SpegP {de} .
+> Compiled speg variable \lTmpaSpeg:
+\SpegChoice 
 {
   {
-    \TpegP 
+    \SpegP 
     {
       ab
     }
   }
   {
-    \TpegP 
+    \SpegP 
     {
       cd
     }
   }
   {
-    \TpegP 
+    \SpegP 
     {
       de
     }
@@ -30,24 +30,24 @@ TEST 1: choice operator
 ============================================================
 TEST 2: concat operator
 ============================================================
-> Input= \TpegP {aa} * \TpegP {bb} * \TpegP {cc} .
-> Compiled tpeg variable \lTmpaTpeg:
-\TpegConcat 
+> Input= \SpegP {aa} * \SpegP {bb} * \SpegP {cc} .
+> Compiled speg variable \lTmpaSpeg:
+\SpegConcat 
 {
   {
-    \TpegP 
+    \SpegP 
     {
       aa
     }
   }
   {
-    \TpegP 
+    \SpegP 
     {
       bb
     }
   }
   {
-    \TpegP 
+    \SpegP 
     {
       cc
     }
@@ -57,11 +57,11 @@ TEST 2: concat operator
 ============================================================
 TEST 3: not predicate operator
 ============================================================
-> Input= ! \TpegP {ddd} .
-> Compiled tpeg variable \lTmpaTpeg:
-\TpegNot 
+> Input= ! \SpegP {ddd} .
+> Compiled speg variable \lTmpaSpeg:
+\SpegNot 
 {
-  \TpegP 
+  \SpegP 
   {
     ddd
   }
@@ -70,11 +70,11 @@ TEST 3: not predicate operator
 ============================================================
 TEST 4: and predicate operator
 ============================================================
-> Input= & \TpegP {eee} .
-> Compiled tpeg variable \lTmpaTpeg:
-\TpegAnd 
+> Input= & \SpegP {eee} .
+> Compiled speg variable \lTmpaSpeg:
+\SpegAnd 
 {
-  \TpegP 
+  \SpegP 
   {
     eee
   }
@@ -83,11 +83,11 @@ TEST 4: and predicate operator
 ============================================================
 TEST 5: repeat operator
 ============================================================
-> Input= \TpegP {test} ^ 4 .
-> Compiled tpeg variable \lTmpaTpeg:
-\TpegRepeat 
+> Input= \SpegP {test} ^ 4 .
+> Compiled speg variable \lTmpaSpeg:
+\SpegRepeat 
 {
-  \TpegP 
+  \SpegP 
   {
     test
   }
